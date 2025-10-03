@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaFolder, FaTrophy, FaCalendarAlt } from 'react-icons/fa';
+import { FaTrophy, FaCalendarAlt } from 'react-icons/fa';
 import Modal from './Modal';
 import './Gallery.css';
 
