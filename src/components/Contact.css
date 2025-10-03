@@ -1,0 +1,72 @@
+/* Styles for Contact component */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.contact-info a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-info a:hover,
+.contact-info a:focus {
+  text-decoration: underline;
+}
+
+.social-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #f1f1f1;
+  color: #111;
+  text-decoration: none;
+  transition: transform 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.social-links a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+  transform: translateY(-3px);
+  background: #e6e6e6;
+}
+
+/* Platform brand hints (optional) */
+.social-links a.facebook:hover { color: #1877f2; }
+.social-links a.tiktok:hover { color: #000; }
+.social-links a.x:hover { color: #1da1f2; }
+.social-links a.youtube:hover { color: #ff0000; }
+.social-links a.spotify:hover { color: #1db954; }
+
+@media (max-width: 520px) {
+  .social-links {
+    gap: 0.5rem;
+  }
+  .social-links a {
+    width: 36px;
+    height: 36px;
+  }
+}

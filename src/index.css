@@ -1,0 +1,120 @@
+:root {
+  /* ================================================= */
+  /* 🎨 Color Palette */
+  /* ================================================= */
+
+  /* Primary color: Emerald Green (From Logo) - Use for main buttons, primary headers, active states */
+  --color-primary: #00A36C;
+
+  /* Secondary/Accent color: Gold/Yellow (From Logo) - Use for hovers, accents, highlights, badges */
+  --color-secondary: #FFC72C;
+
+  /* Text color: A deep, dark gray for high readability */
+  --color-tertiary: #1A1A1A;
+
+  /* Backgrounds: */
+  /* Main background color - Very light gray/off-white */
+  --color-background-light: #F8F8F8;
+  /* Dark section background (e.g., Footer, Hero) */
+  --color-background-dark: #2D323E;
+
+  /* Basic colors: */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+
+  /* Utility Colors: */
+  --color-success: #4CAF50; /* For success messages */
+  --color-error: #F44336; /* For error messages */
+
+  /* ================================================= */
+  /* 🖋️ Typography (Inter Font) */
+  /* ================================================= */
+
+  /* Font Families: */
+  /* Main font for all body text, paragraphs, and standard elements */
+  --font-family-body: 'Inter', sans-serif;
+  /* Font for all H1, H2, H3, etc., headers */
+  --font-family-heading: 'Inter', sans-serif;
+
+  /* Font Weights: */
+  --font-weight-regular: 400; /* Use for paragraphs and standard body text */
+  --font-weight-medium: 500; /* Use for navigation links and subtle emphasis */
+  --font-weight-bold: 700; /* Use for headers and strong emphasis */
+
+  /* Font Sizes (Adjust these based on your design/mobile needs): */
+  --font-size-h1: 3.5rem; /* Main page title/Hero header */
+  --font-size-h2: 2rem; /* Major section headers */
+  --font-size-h3: 1.5rem; /* Sub-section headers */
+  --font-size-body: 1rem; /* Standard paragraph/body text size */
+  --font-size-small: 0.875rem; /* Captions, footers, legal text */
+
+  /* Line Height: */
+  --line-height-body: 1.6; /* Standard line height for body text */
+
+  /* ================================================= */
+  /* ✨ Shadows, Spacing, and Utilities */
+  /* ================================================= */
+
+  /* Card Shadow Variables: */
+  /* Standard shadow for cards, containers, and elevated elements */
+  --shadow-card-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Deeper shadow for interactive elements (e.g., on hover) */
+  --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  /* Spacing Variables (Use for margin and padding consistency): */
+  --spacing-xs: 0.5rem;   /* Tiny spacing (e.g., between icons and text) */
+  --spacing-sm: 1rem;     /* Small spacing (e.g., inner button padding) */
+  --spacing-md: 1.5rem;   /* Medium/Standard spacing (e.g., card padding, section gaps) */
+  --spacing-lg: 3rem;     /* Large spacing (e.g., between major sections) */
+
+  /* Border Radius: */
+  --border-radius-sm: 4px; /* Small radius for buttons and inputs */
+  --border-radius-lg: 8px; /* Larger radius for cards and main containers */
+
+  /* Transitions: */
+  --transition-speed: 0.3s; /* Default transition time for smooth hovers/animations */
+  --transition-ease: ease-in-out; /* Default transition function */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-body);
+  background-color: var(--color-background-light);
+  color: var(--color-tertiary);
+  line-height: var(--line-height-body);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+section {
+  padding: var(--spacing-lg) 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-tertiary);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+

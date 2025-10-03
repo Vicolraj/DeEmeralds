@@ -1,0 +1,70 @@
+.audio-player {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255,255,255,0.9);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.audio-player button {
+  background: linear-gradient(180deg,#ffffff,#f3f3f3);
+  border: 1px solid #ddd;
+  color: #111;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.audio-player button:hover,
+.audio-player button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.audio-player .unmute {
+  background: #1db954; /* gentle spotify-green for accent */
+  color: white;
+  border: none;
+}
+
+@media (max-width: 520px) {
+  .audio-player {
+    right: 10px;
+    bottom: 10px;
+    padding: 6px;
+  }
+  .audio-player button {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Consent overlay when autoplay with sound is blocked */
+.audio-consent-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  z-index: 10000;
+}
+.audio-consent-box {
+  background: white;
+  padding: 20px 22px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 420px;
+  text-align: center;
+}
+.audio-consent-actions { margin-top: 12px; }
+.audio-consent-box .unmute { padding: 8px 14px; font-weight: 700; }

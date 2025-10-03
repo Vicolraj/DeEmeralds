@@ -1,0 +1,54 @@
+/* ================================================= */
+/* 🖼️ Gallery Section Styles */
+/* ================================================= */
+
+.gallery {
+  background-color: var(--color-background-light);
+}
+
+.folder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap; /* Allows folders to stack on smaller screens */
+  margin-top: var(--spacing-md);
+}
+
+.folder {
+  background-color: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card-light);
+  text-align: center;
+  cursor: pointer;
+  width: 280px; /* Fixed width for consistency */
+  border: 2px solid transparent;
+  transition: 
+    transform var(--transition-speed) var(--transition-ease),
+    box-shadow var(--transition-speed) var(--transition-ease),
+    border-color var(--transition-speed) var(--transition-ease);
+}
+
+.folder:hover {
+  transform: translateY(-10px); /* Lifts the card on hover */
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-secondary); /* Adds a gold highlight on hover */
+}
+
+.folder-icon {
+  font-size: 4rem; /* Makes the icon large and prominent */
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  transition: color var(--transition-speed) var(--transition-ease);
+}
+
+.folder:hover .folder-icon {
+  color: var(--color-secondary);
+}
+
+.folder h3 {
+  font-size: var(--font-size-h3);
+  color: var(--color-tertiary);
+  margin: 0;
+}
