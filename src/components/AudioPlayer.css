@@ -68,3 +68,26 @@
 }
 .audio-consent-actions { margin-top: 12px; }
 .audio-consent-box .unmute { padding: 8px 14px; font-weight: 700; }
+
+/* Dismiss button for users who prefer no sound */
+.audio-consent-box .dismiss {
+  margin-left: 8px;
+  background: transparent;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+@media (max-width: 520px) {
+  .audio-consent-box {
+    max-width: calc(100% - 32px);
+    margin: 0 16px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .audio-consent-box h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .audio-consent-box p { font-size: 0.95rem; }
+  .audio-consent-actions { display: flex; gap: 8px; justify-content: center; }
+  .audio-consent-box .unmute, .audio-consent-box .dismiss { flex: 1; }
+}

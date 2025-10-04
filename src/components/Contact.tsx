@@ -1,11 +1,11 @@
-import { FaFacebookF, FaTiktok, FaTwitter, FaYoutube, FaSpotify, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { FaFacebookF, FaTiktok, FaTwitter, FaYoutube, FaSpotify, FaInstagram } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => (
     <section id="contact">
         <div className="container">
             <h2>Get In Touch</h2>
-            <div className="contact-info">
+            {/* <div className="contact-info">
                 <p>
                     <FaEnvelope aria-hidden />
                     <a href="mailto:info@de-emerald.org"> info@de-emerald.org</a>
@@ -14,22 +14,25 @@ const Contact = () => (
                     <FaPhone aria-hidden />
                     <a href="tel:+23490678473"> +23490678473</a>
                 </p>
-            </div>
+            </div> */}
 
             <div className="social-links" aria-label="Social media links">
-                <a href="" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <a href="https://m.facebook.com/deemeraldschoir" target="_blank" rel="noreferrer" aria-label="Facebook">
                     <FaFacebookF />
                 </a>
-                <a href="" target="_blank" rel="noreferrer" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@deemeraldschoir" target="_blank" rel="noreferrer" aria-label="TikTok">
                     <FaTiktok />
                 </a>
-                <a href="" target="_blank" rel="noreferrer" aria-label="X">
+                <a href="https://twitter.com/Deemeralds1" target="_blank" rel="noreferrer" aria-label="X">
                     <FaTwitter />
                 </a>
-                <a href="" target="_blank" rel="noreferrer" aria-label="YouTube">
+                <a href="https://www.instagram.com/deemeraldschoir/" target="_blank" rel="noreferrer" aria-label="X">
+                    <FaInstagram />
+                </a>
+                <a href="https://youtube.com/@DeEmeraldsPerfectExpression" target="_blank" rel="noreferrer" aria-label="YouTube">
                     <FaYoutube />
                 </a>
-                <a href="" target="_blank" rel="noreferrer" aria-label="Spotify">
+                <a href="https://open.spotify.com/artist/yourid" target="_blank" rel="noreferrer" aria-label="Spotify">
                     <FaSpotify />
                 </a>
             </div>

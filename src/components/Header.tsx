@@ -21,8 +21,8 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <a href="#hero" className="logo">
-          <img src={logo} alt="De Emerald Logo" />
-          <span>De Emerald</span>
+            <img src={logo} alt="De Emeralds Logo" />
+            <span>De Emeralds</span>
         </a>
         
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>

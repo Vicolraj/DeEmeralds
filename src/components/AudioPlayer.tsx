@@ -40,14 +40,14 @@ const AudioPlayer = () => {
       if (mutedWorked) {
         setIsPlaying(true);
         setIsMuted(true);
-        // We played but muted — prompt user to enable sound
-        setShowEnablePrompt(true);
+        // We played but muted — prompt user to enable sound after a short delay so css can load
+        setTimeout(() => setShowEnablePrompt(true), 200);
         return;
       }
 
       // Both attempts failed; leave controls for user
       setIsPlaying(false);
-      setShowEnablePrompt(true);
+      setTimeout(() => setShowEnablePrompt(true), 200);
     })();
 
     // Keep component state in sync with audio events
@@ -146,6 +146,7 @@ const AudioPlayer = () => {
                   console.warn('Failed to enable audio:', err);
                 }
               }} className="unmute">Enable audio</button>
+              <button onClick={() => { setShowEnablePrompt(false); }} className="dismiss">Continue without sound</button>
             </div>
           </div>
         </div>

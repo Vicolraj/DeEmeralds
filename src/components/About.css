@@ -2,10 +2,13 @@
   display: flex;
   gap: var(--spacing-lg);
   align-items: center;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .about-image {
   flex: 1;
+  position: relative;
 }
 
 .about-image img {
@@ -13,6 +16,18 @@
   max-width: 400px;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-card-light);
+}
+
+.about-image .name{
+  position: absolute;
+  width: max-content;
+  padding: 10px;
+  height: max-content;
+  color: white;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-primary);
 }
 
 .about-text {

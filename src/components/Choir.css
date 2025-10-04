@@ -9,11 +9,15 @@
 .choir-member {
   padding: 0 var(--spacing-sm); /* Adds space between member cards */
   cursor: grab;
+  min-width: 200px;
+  margin: 10px;
+aspect-ratio: 4 / 3; 
 }
 
 .choir-member img {
   width: 100%;
-  height: 300px;
+  
+  /* Maintains a consistent aspect ratio */
   object-fit: cover; /* Ensures images are not stretched */
   object-position: top; /* Focuses on the top part of the image */
   border-radius: var(--border-radius-lg);
@@ -56,4 +60,14 @@
 
 .carousel .control-arrow:hover {
   opacity: 1 !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .choir-member img {
+    height: auto;
+    max-height: 60vh;
+  }
+  .choir-member { margin: 6px; }
+  .carousel .control-arrow { height: 36px; width: 36px; }
 }

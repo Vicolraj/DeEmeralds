@@ -8,6 +8,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  animation: bg-animate 7s ease infinite alternate;
 }
 
 .hero-overlay {
@@ -16,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  background-color: rgba(0, 0, 0, 0.536); /* Dark overlay */
 }
 
 .hero-content {
@@ -26,7 +27,7 @@
 
 .hero-logo {
   width: 150px;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: -40px;
 }
 
 .hero h1 {
@@ -39,4 +40,18 @@
   font-size: var(--font-size-h3);
   color: var(--color-secondary);
   font-weight: var(--font-weight-medium);
+}
+
+@keyframes bg-animate{
+    0%{
+      background-image: url(../assets/img/hero-bg.jpg);
+    }
+
+    50%{
+      background-image: url(../assets/img/hero-bg1.jpg);
+    }
+
+    100%{
+      background-image: url(../assets/img/hero-bg2.png);
+    }
 }
