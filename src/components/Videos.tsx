@@ -1,4 +1,3 @@
-import { HiReceiptPercent } from 'react-icons/hi2';
 import './Videos.css';
 import { motion } from 'framer-motion';
 

@@ -1,7 +1,6 @@
 import { FaFacebookF, FaTiktok, FaTwitter, FaYoutube, FaInstagram, FaMusic, FaSpotify } from 'react-icons/fa';
 import './Contact.css';
 import { motion } from 'framer-motion';
-import { FaApple } from 'react-icons/fa6';
 
 const Contact = () => (
     <motion.section id="contact" 
