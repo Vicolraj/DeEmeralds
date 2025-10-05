@@ -8,7 +8,7 @@ type Video = {
 
 const videos: Video[] = [
   { id: 'pvmU1eEo140', title: 'Ji Masun (Solo Version)' },
-  { id: 'qiHxDvX5NKw', title: 'Electrifying Hallelujah Chorus rendered at All Nation Concert', },
+  { id: 'jgBVXILz-Vs', title: 'Electrifying Hallelujah Chorus rendered at All Nation Concert', },
   { id: 'GQW0MHVKJpM', title: 'De Emeralds at Baba Authority`s Akure 2025 Crusade' },
   { id: 'gSq8i7vkZSg', title: 'De Emeralds Choir graces the burial service of Ch. Agboola Bayode.' },
   { id: 'TYL406FwzVA', title: `Aigbagbo bila! Temi l'oluwa || Hanover` },
@@ -37,7 +37,7 @@ const Videos = () => {
                   allowFullScreen
                 />
               </div>
-              <p className="video-title">{v.title} {index}</p>
+              <p className="video-title">{v.title}</p>
             </motion.div>
           ))}
           
