@@ -1,8 +1,14 @@
-import { FaFacebookF, FaTiktok, FaTwitter, FaYoutube, FaSpotify, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaTiktok, FaTwitter, FaYoutube, FaInstagram, FaMusic, FaSpotify } from 'react-icons/fa';
 import './Contact.css';
+import { motion } from 'framer-motion';
+import { FaApple } from 'react-icons/fa6';
 
 const Contact = () => (
-    <section id="contact">
+    <motion.section id="contact" 
+    initial={{ opacity: 0}}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.5 }}
+            transition={{ duration: 1 }}>
         <div className="container">
             <h2>Get In Touch</h2>
             {/* <div className="contact-info">
@@ -17,7 +23,7 @@ const Contact = () => (
             </div> */}
 
             <div className="social-links" aria-label="Social media links">
-                <a href="https://m.facebook.com/deemeraldschoir" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <a href="https://m.facebook.com/deemeraldschoir?mibextid=ZbWKwL" target="_blank" rel="noreferrer" aria-label="Facebook">
                     <FaFacebookF />
                 </a>
                 <a href="https://www.tiktok.com/@deemeraldschoir" target="_blank" rel="noreferrer" aria-label="TikTok">
@@ -32,12 +38,15 @@ const Contact = () => (
                 <a href="https://youtube.com/@DeEmeraldsPerfectExpression" target="_blank" rel="noreferrer" aria-label="YouTube">
                     <FaYoutube />
                 </a>
-                <a href="https://open.spotify.com/artist/yourid" target="_blank" rel="noreferrer" aria-label="Spotify">
+                <a href="https://music.apple.com/us/artist/de-emeralds-choir/1545378022" target="_blank" rel="noreferrer" aria-label="YouTube">
+                    <FaMusic />
+                </a>
+                <a href="https://open.spotify.com/artist/3W5jySHVhhljJQgVseVcMn" target="_blank" rel="noreferrer" aria-label="Spotify">
                     <FaSpotify />
                 </a>
             </div>
         </div>
-    </section>
+    </motion.section>
 );
 
 export default Contact;

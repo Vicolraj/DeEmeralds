@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Choir from './components/Choir';
 import Gallery from './components/Gallery';
+import Videos from './components/Videos';
 import Rehearsal from './components/Rehearsal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -20,6 +21,7 @@ function App() {
         <About />
         <Choir />
         <Gallery />
+  <Videos />
         <Rehearsal />
         <Contact />
       </main>

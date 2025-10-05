@@ -3,13 +3,13 @@ import { FaTimes } from 'react-icons/fa';
 import './Modal.css';
 
 interface ModalProps {
-    content: 'awards' | 'events';
+    content: 'photos' | 'events';
     onClose: () => void;
 }
 
 const Modal = ({ content, onClose }: ModalProps) => {
-    const awardsContent = <div>Content for awards...</div>;
-    const eventsContent = <div>Content for past events...</div>;
+    const photosContent = <PhotosContent />;
+    const eventsContent = <EventsContent />;
 
     return (
         <AnimatePresence>
@@ -28,11 +28,21 @@ const Modal = ({ content, onClose }: ModalProps) => {
                   onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
                 >
                     <button onClick={onClose} className="close-button"><FaTimes /></button>
-                    <h2>{content === 'awards' ? 'Our Awards' : 'Past Events'}</h2>
-                    {content === 'awards' ? awardsContent : eventsContent}
+                    <h2>{content === 'photos' ? 'Our Photos' : 'Events'}</h2>
+                    {content === 'photos' ? photosContent : eventsContent}
                 </motion.div>
             </motion.div>
         </AnimatePresence>
     );
 };
 export default Modal;
+
+const PhotosContent = ()=> {
+    return(<div className='gallery-list-container'>Not uploaded yet</div>)
+}
+const EventsContent = ()=> {
+    return(
+    <div className='gallery-list-container'>
+        not Uploaded yet
+    </div>)
+}

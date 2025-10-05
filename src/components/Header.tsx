@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/img/logo_nobg.png'; // Your logo
 import './Header.css'; // We'll create this CSS file next
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,11 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="header">
+    <motion.header className="header"
+    initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0,  }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.5 }}>
       <div className="header-container">
         <a href="#hero" className="logo">
             <img src={logo} alt="De Emeralds Logo" />
@@ -41,7 +46,7 @@ const Header = () => {
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
