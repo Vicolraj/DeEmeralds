@@ -33,10 +33,10 @@ const Rehearsal = () => (
         </div>
         <br />
         <div className="map-wrapper">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16137181.002963053!2d-1.6903959093750043!3d9.087301242816606!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10478fe9320fe6b3%3A0x1c0e0c62492a1837!2sYafrato%20Shopping%20Complex!5e0!3m2!1sen!2sng!4v1759610879201!5m2!1sen!2sng"
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1618.5783930869172!2d5.212051811390725!3d7.2522679575744595!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10478fe9320fe6b3%3A0x1c0e0c62492a1837!2sYafrato%20Shopping%20Complex!5e0!3m2!1sen!2sng!4v1759688446085!5m2!1sen!2sng"
             width="100%"
             height="450"
-            style={{border: '0'}} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            style={{border: '0'}}  loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </motion.section>
 );
