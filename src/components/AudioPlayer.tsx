@@ -12,10 +12,8 @@ const AudioPlayer = () => {
     // Create audio element on mount
     const audio = new Audio(musicFile);
     audio.loop = true;
-    // Try unmuted autoplay first (preferred). Browsers may block this.
     audio.muted = false;
     audioRef.current = audio;
-    // Helper to try playing with a specific muted value
     const tryPlay = async (muted: boolean) => {
       try {
         audio.muted = muted;
@@ -26,7 +24,6 @@ const AudioPlayer = () => {
       }
     };
 
-    // Attempt unmuted autoplay first, fall back to muted autoplay, otherwise remain paused
     (async () => {
       const unmutedWorked = await tryPlay(false);
       if (unmutedWorked) {
@@ -40,17 +37,14 @@ const AudioPlayer = () => {
       if (mutedWorked) {
         setIsPlaying(true);
         setIsMuted(true);
-        // We played but muted — prompt user to enable sound after a short delay so css can load
         setTimeout(() => setShowEnablePrompt(true), 200);
         return;
       }
 
-      // Both attempts failed; leave controls for user
       setIsPlaying(false);
       setTimeout(() => setShowEnablePrompt(true), 200);
     })();
 
-    // Keep component state in sync with audio events
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onVolumeChange = () => setIsMuted(!!audio.muted);
@@ -60,7 +54,6 @@ const AudioPlayer = () => {
     audio.addEventListener('volumechange', onVolumeChange);
 
     return () => {
-      // Cleanup: remove listeners, pause and remove src
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
       audio.removeEventListener('volumechange', onVolumeChange);

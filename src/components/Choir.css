@@ -1,13 +1,9 @@
-/* ================================================= */
-/* 🎵 Choir Section Styles */
-/* ================================================= */
-
 .choir-section {
-  background-color: var(--color-white); /* A clean background for the carousel */
+  background-color: var(--color-white);
 }
 
 .choir-member {
-  padding: 0 var(--spacing-sm); /* Adds space between member cards */
+  padding: 0 var(--spacing-sm);
   cursor: grab;
   min-width: 200px;
   margin: 10px;
@@ -17,9 +13,8 @@ aspect-ratio: 4 / 3;
 .choir-member img {
   width: 100%;
   
-  /* Maintains a consistent aspect ratio */
-  object-fit: cover; /* Ensures images are not stretched */
-  object-position: top; /* Focuses on the top part of the image */
+  object-fit: cover;
+  object-position: top;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-card-light);
   transition: 
@@ -28,15 +23,12 @@ aspect-ratio: 4 / 3;
 }
 
 .choir-member img:hover {
-  transform: scale(1.03); /* Subtle zoom on hover */
+  transform: scale(1.03);
   box-shadow: var(--shadow-card-hover);
 }
 
-/* The carousel library 'react-responsive-carousel' creates a 'legend' class 
-  for the slide captions. We can style it directly.
-*/
+
 .carousel .legend {
-  /* Overriding default styles from the library */
   background-color: var(--color-primary) !important;
   opacity: 1 !important;
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg) !important;
@@ -46,7 +38,6 @@ aspect-ratio: 4 / 3;
   padding: var(--spacing-sm) !important;
 }
 
-/* Customize carousel arrows */
 .carousel .control-arrow {
   background: var(--color-primary) !important;
   height: 40px;
@@ -62,7 +53,6 @@ aspect-ratio: 4 / 3;
   opacity: 1 !important;
 }
 
-/* Responsive tweaks */
 @media (max-width: 520px) {
   .choir-member img {
     height: auto;

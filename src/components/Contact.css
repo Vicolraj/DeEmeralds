@@ -1,4 +1,3 @@
-/* Styles for Contact component */
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -55,7 +54,6 @@
   background: #e6e6e6;
 }
 
-/* Platform brand hints (optional) */
 .social-links a.facebook:hover { color: #1877f2; }
 .social-links a.tiktok:hover { color: #000; }
 .social-links a.x:hover { color: #1da1f2; }

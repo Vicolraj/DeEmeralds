@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import logo from '../assets/img/logo_nobg.png';
+import logo from '../assets/img/logo_nobg.webp';
 import './Hero.css';
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
         className="hero-content"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.7 }}
       >
   <img src={logo} alt="De Emeralds Logo" className="hero-logo" />
   <h1>De Emeralds</h1>

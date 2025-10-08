@@ -9,7 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
 
-import './App.css'; // Your main stylesheet
+import './App.css';
 
 function App() {
   return (

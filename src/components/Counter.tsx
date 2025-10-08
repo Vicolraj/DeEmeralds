@@ -18,7 +18,6 @@ const Counter = ({ target, label }: CounterProps) => {
 
   useEffect(() => {
     if (inView) {
-      // animate from 0 to target and update local state on each frame
       controlsRef.current = animate(0, target, {
         duration: 2,
         ease: 'easeOut',
@@ -27,7 +26,6 @@ const Counter = ({ target, label }: CounterProps) => {
     }
 
     return () => {
-      // stop the animation if component unmounts
       controlsRef.current?.stop?.();
     };
   }, [inView, target]);

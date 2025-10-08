@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import logo from '../assets/img/logo_nobg.png'; // Your logo
-import './Header.css'; // We'll create this CSS file next
+import logo from '../assets/img/logo_nobg.webp'; 
+import './Header.css'; 
 import { motion } from 'framer-motion';
 
 const Header = () => {

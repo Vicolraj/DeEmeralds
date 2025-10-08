@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import './Choir.css';
 
-// Assume you have images in src/assets/choir/
 import member1 from '../assets/img/founder.jpg';
 import member2 from '../assets/img/founder.jpg';
 import member3 from '../assets/img/founder.jpg';

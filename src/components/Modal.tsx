@@ -25,7 +25,7 @@ const Modal = ({ content, onClose }: ModalProps) => {
                   initial={{ scale: 0.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.5, opacity: 0 }}
-                  onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+                  onClick={(e) => e.stopPropagation()} 
                 >
                     <button onClick={onClose} className="close-button"><FaTimes /></button>
                     <h2>{content === 'photos' ? 'Our Photos' : 'Events'}</h2>

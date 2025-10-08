@@ -14,7 +14,6 @@
   font-weight: 600;
 }
 
-/* Responsive stacked table on small screens */
 @media (max-width: 640px) {
   .rehearsal-schedule thead { display: none; }
   .rehearsal-schedule tr { display: block; margin-bottom: 1rem; border-bottom: 1px solid #eee; }
@@ -22,7 +21,6 @@
   .rehearsal-schedule td::before { content: attr(data-label); position: absolute; left: 0; width: 45%; padding-left: 0.5rem; font-weight: 600; text-align: left; }
 }
 
-/* Map wrapper keeps aspect ratio and is responsive */
 .map-wrapper {
   width: 100%;
   max-width: 100%;
