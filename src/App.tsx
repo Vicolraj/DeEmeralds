@@ -7,14 +7,40 @@ import Videos from './components/Videos';
 import Rehearsal from './components/Rehearsal';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AudioPlayer from './components/AudioPlayer';
+// import AudioPlayer from './components/AudioPlayer';
 
 import './App.css';
+import { useContext, useEffect} from 'react';
+import { membersCtx, MembersProvider } from './contexts/membersCtx';
+  
+
+
 
 function App() {
+    const {setMembers} = useContext(membersCtx)!;
+    useEffect(
+      () => {
+        fetch(import.meta.env.VITE_API)
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return res.json();
+          })
+          .then((data) => {
+            setMembers(data);
+          })
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+          });
+      },
+      []
+  );
+
   return (
+    <MembersProvider>
     <div className="App">
-      <AudioPlayer />
+      {/*<AudioPlayer />*/}
       <Header />
       <main>
         <Hero />
@@ -27,6 +53,8 @@ function App() {
       </main>
       <Footer />
     </div>
+
+    </MembersProvider>
   );
 }
 

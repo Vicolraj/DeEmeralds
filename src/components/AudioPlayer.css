@@ -1,4 +1,4 @@
-.audio-player {
+/* .audio-player {
   position: fixed;
   right: 16px;
   bottom: 16px;
@@ -28,10 +28,10 @@
 .audio-player button:focus {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-}
+} */
 
-.audio-player .unmute {
-  background: #1db954; /* gentle spotify-green for accent */
+/* .audio-player .unmute {
+  background: #1db954;
   color: white;
   border: none;
 }
@@ -46,10 +46,10 @@
     padding: 6px 8px;
     font-size: 0.85rem;
   }
-}
+} */
 
 /* Consent overlay when autoplay with sound is blocked */
-.audio-consent-overlay {
+/* .audio-consent-overlay {
   position: fixed;
   inset: 0;
   display: flex;
@@ -67,10 +67,10 @@
   text-align: center;
 }
 .audio-consent-actions { margin-top: 12px; }
-.audio-consent-box .unmute { padding: 8px 14px; font-weight: 700; }
+.audio-consent-box .unmute { padding: 8px 14px; font-weight: 700; } */
 
 /* Dismiss button for users who prefer no sound */
-.audio-consent-box .dismiss {
+/* .audio-consent-box .dismiss {
   margin-left: 8px;
   background: transparent;
   border: 1px solid #ccc;
@@ -90,4 +90,4 @@
   .audio-consent-box p { font-size: 0.95rem; }
   .audio-consent-actions { display: flex; gap: 8px; justify-content: center; }
   .audio-consent-box .unmute, .audio-consent-box .dismiss { flex: 1; }
-}
+} */
