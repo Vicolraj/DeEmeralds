@@ -7,7 +7,7 @@
   cursor: grab;
   min-width: 200px;
   margin: 10px;
-aspect-ratio: 4 / 3; 
+  /* aspect-ratio: 4 / 3;  */
 }
 
 .choir-member .img {
@@ -60,8 +60,7 @@ aspect-ratio: 4 / 3;
 
 @media (max-width: 520px) {
   .choir-member .img {
-    height: auto;
-    /* max-height: 60vh; */
+   aspect-ratio: ;
   }
   .choir-member { margin: 6px; }
   .carousel .control-arrow { height: 36px; width: 36px; }
