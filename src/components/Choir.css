@@ -60,7 +60,7 @@
 
 @media (max-width: 520px) {
   .choir-member .img {
-   aspect-ratio: ;
+   /* aspect-ratio: ; */
   }
   .choir-member { margin: 6px; }
   .carousel .control-arrow { height: 36px; width: 36px; }
