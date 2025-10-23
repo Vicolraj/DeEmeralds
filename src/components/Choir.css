@@ -10,11 +10,11 @@
 aspect-ratio: 4 / 3; 
 }
 
-.choir-member img {
+.choir-member .img {
   width: 100%;
-  
-  object-fit: cover;
-  object-position: top;
+  aspect-ratio: 1080/1218;
+  background-size: cover !important;
+  background-repeat: no-repeat;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-card-light);
   transition: 
@@ -22,7 +22,7 @@ aspect-ratio: 4 / 3;
     box-shadow var(--transition-speed) var(--transition-ease);
 }
 
-.choir-member img:hover {
+.choir-member .img:hover {
   transform: scale(1.03);
   box-shadow: var(--shadow-card-hover);
 }
@@ -36,6 +36,7 @@ aspect-ratio: 4 / 3;
   font-weight: var(--font-weight-medium) !important;
   color: var(--color-white) !important;
   padding: var(--spacing-sm) !important;
+
 }
 
 .carousel .control-arrow {
@@ -49,14 +50,18 @@ aspect-ratio: 4 / 3;
   transition: opacity var(--transition-speed) !important;
 }
 
+.carousel .dot{
+  display: none !important;
+}
+
 .carousel .control-arrow:hover {
   opacity: 1 !important;
 }
 
 @media (max-width: 520px) {
-  .choir-member img {
+  .choir-member .img {
     height: auto;
-    max-height: 60vh;
+    /* max-height: 60vh; */
   }
   .choir-member { margin: 6px; }
   .carousel .control-arrow { height: 36px; width: 36px; }

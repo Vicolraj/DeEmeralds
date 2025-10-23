@@ -2,7 +2,15 @@ import { Carousel } from 'react-responsive-carousel';
 import { useContext, useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import './Choir.css';
-import { membersCtx } from '../contexts/membersCtx';
+import { MembersCtx, type memberType } from '../App';
+
+
+
+const fallbackMembers: memberType = [
+    { Name: 'Adelana Mathew', Picture: 'founder.jpg' },
+    { Name: 'Ibidun Ojo', Picture: 'founder.jpg' },
+    { Name: 'Peter Irewole', Picture: 'founder.jpg' },
+];
 
 export default function Choir()  {
     const [slidePercent, setSlidePercent] = useState<number>(33);
@@ -28,8 +36,9 @@ export default function Choir()  {
         return () => window.removeEventListener('resize', updateSettings);
     }, []);
 
-    const {members} = useContext(membersCtx)!;
 
+    const members = useContext(MembersCtx);
+    const list = (members && members.length) ? members : fallbackMembers;
     return (
         <section id="choir" className="choir-section">
             <div className="container">
@@ -44,9 +53,14 @@ export default function Choir()  {
                     swipeable
                     emulateTouch
                 >
-                    { members && members.map((member, index) => (
+                    {list.map((member, index) => (
                         <div key={index} className="choir-member">
-                            <img src={`https://vicolraj.github.io/DeEmeraldsPictures/${member.Picture}`} alt={member.Name} />
+                            <div className='img'
+                                style={{
+                                    background: `url(${`https://vicolraj.github.io/DeEmeraldsPictures/${member.Picture}`})`,
+                                    // background: `url(${member.Picture.startsWith('http') ? member.Picture : `https://vicolraj.github.io/DeEmeraldsPictures/${member.Picture}`})`,
+                                    backgroundPosition: member.Position ? member.Position : 'center'
+                                    }}></div>
                             <p className="legend">{member.Name}</p>
                         </div>
                     ))}

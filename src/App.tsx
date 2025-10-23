@@ -10,14 +10,16 @@ import Footer from './components/Footer';
 // import AudioPlayer from './components/AudioPlayer';
 
 import './App.css';
-import { useContext, useEffect} from 'react';
-import { membersCtx, MembersProvider } from './contexts/membersCtx';
-  
+import { createContext, useEffect, useState} from 'react';
 
+
+export type memberType = {Name: string, Picture: string, Position?: string}[];
+export const MembersCtx = createContext<memberType>([]);
 
 
 function App() {
-    const {setMembers} = useContext(membersCtx)!;
+        const [members, setMembers] = useState<memberType>([]);
+
     useEffect(
       () => {
         fetch(import.meta.env.VITE_API)
@@ -38,7 +40,7 @@ function App() {
   );
 
   return (
-    <MembersProvider>
+    <MembersCtx.Provider value={members}>
     <div className="App">
       {/*<AudioPlayer />*/}
       <Header />
@@ -54,7 +56,7 @@ function App() {
       <Footer />
     </div>
 
-    </MembersProvider>
+    </MembersCtx.Provider>
   );
 }
 
