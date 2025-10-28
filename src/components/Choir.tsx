@@ -41,9 +41,10 @@ export default function Choir()  {
                     autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                     pagination={{ clickable: true }}
                     breakpoints={{
-                        0: { slidesPerView: 1 },
-                        520: { slidesPerView: 2 },
+                        620: { slidesPerView: 1 },
+                        700: { slidesPerView: 2 },
                         900: { slidesPerView: 3 },
+                        1100: {slidesPerView: 4},
                     }}
                     // allow page scrolling when user swipes vertically
                     touchStartPreventDefault={false}
