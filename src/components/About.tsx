@@ -2,8 +2,11 @@ import { motion } from 'framer-motion';
 import founderImg from '../assets/img/founder.jpg';
 import Counter from './Counter';
 import './About.css';
+import { useContext } from 'react';
+import { MembersCtx } from '../App';
 
 const About = () => {
+  const member = useContext(MembersCtx);
   return (
     <section id="about" className="about">
       <div className="container">
@@ -35,7 +38,7 @@ const About = () => {
             </p>
             <div className="stats-container">
               <Counter target={25} label="Songs" />
-              <Counter target={50} label="Choir Members" />
+              <Counter target={member.length} label="Choir Members" />
               <Counter target={100} label="Events Held" />
             </div>
           </motion.div>

@@ -6,10 +6,12 @@ import { MembersCtx, type memberType } from '../App';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper modules from the package entry (preferred, matches package exports)
 // Import Swiper modules from the package's exported modules entry
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import picture from '../assets/img/founder.jpg'
+import { FaArrowLeft } from 'react-icons/fa6';
+import { FaArrowRight } from 'react-icons/fa';
 
 
 
@@ -29,10 +31,14 @@ export default function Choir()  {
                 <h2>Meet Our Choir</h2>
 
                 <Swiper
-                    modules={[Autoplay]}
+                    modules={[Autoplay, Navigation]}
+                    navigation={{
+                        prevEl: ".prev",
+                        nextEl: ".next",
+                    }}
                     spaceBetween={16}
                     loop={true}
-                    autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: false }}
+                    autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                     pagination={{ clickable: true }}
                     breakpoints={{
                         0: { slidesPerView: 1 },
@@ -53,9 +59,14 @@ export default function Choir()  {
                                     }}
                                 />
                                 <p className="legend">{member.Name}</p>
+
+                                
                             </div>
+                            
                         </SwiperSlide>
                     ))}
+                    <button className='prev'><FaArrowLeft /></button>
+                    <button className='next'><FaArrowRight /></button>                    
                 </Swiper>
             </div>
         </section>

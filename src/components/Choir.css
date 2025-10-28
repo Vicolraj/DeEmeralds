@@ -3,10 +3,11 @@
 }
 
 .choir-member {
-  padding: 0 var(--spacing-sm);
   cursor: grab;
   min-width: 200px;
+  height: max-content;
   margin: 10px;
+  position: relative;
   /* aspect-ratio: 4 / 3; 
    */
 }
@@ -44,27 +45,43 @@
   padding: var(--spacing-sm) !important;
   text-align: center;
   transform: translateY(-100px);
-  position: relative;
   z-index: 600;
-
+  position: absolute;
+  width: 100%;
 }
 
-.choir-member .control-arrow {
+ .prev,
+ .next {
   background: var(--color-primary) !important;
   height: 40px;
   width: 40px;
+  position: absolute;
+  z-index: 700;
   top: 50% !important;
   transform: translateY(-50%);
+  border: white 1px solid;
   border-radius: 50%;
   opacity: 0.8 !important;
   transition: opacity var(--transition-speed) !important;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.589);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+}
+
+.next{
+  right: 0;
 }
 
 .choir-member .dot{
   display: none !important;
 }
 
-.choir-member .control-arrow:hover {
+ .prev:hover,
+ .next:hover {
   opacity: 1 !important;
 }
 
@@ -74,5 +91,6 @@
     aspect-ratio: auto;
   }
   .choir-member { margin: 6px; }
-  .choir-member .control-arrow { height: 36px; width: 36px; }
+   .prev,
+ .next { height: 36px; width: 36px; }
 }
