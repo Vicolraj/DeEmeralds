@@ -13,8 +13,8 @@ const About = () => {
             className="about-image"
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: 0,  }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8 , ease: 'backInOut'}}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 1 , ease: 'backInOut'}}
           >
             <img src={founderImg} alt="Founder" />
             <small className='name'>ICON (DR) ENG. Oluwagbenga Akinfolarin O.</small>
@@ -23,8 +23,8 @@ const About = () => {
             className="about-text"
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.8, delay: 0.2 , ease: 'backInOut'}}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 1, delay: 0.2 , ease: 'backInOut'}}
           >
             <h3>Our Story</h3>
             <p>

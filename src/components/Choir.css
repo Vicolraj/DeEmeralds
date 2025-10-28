@@ -7,12 +7,13 @@
   cursor: grab;
   min-width: 200px;
   margin: 10px;
-  /* aspect-ratio: 4 / 3;  */
+  /* aspect-ratio: 4 / 3; 
+   */
 }
 
 .choir-member .img {
   width: 100%;
-  aspect-ratio: 1080/1218;
+  aspect-ratio: 1080/1218 !important;
   background-size: cover !important;
   background-repeat: no-repeat;
   border-radius: var(--border-radius-lg);
@@ -23,12 +24,17 @@
 }
 
 .choir-member .img:hover {
-  transform: scale(1.03);
+  transform: scale(0.97);
   box-shadow: var(--shadow-card-hover);
 }
 
+/* Allow vertical page scrolling while swiping horizontally */
+.swiper {
+  touch-action: pan-y;
+}
 
-.carousel .legend {
+
+.choir-member .legend {
   background-color: var(--color-primary) !important;
   opacity: 1 !important;
   border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg) !important;
@@ -36,10 +42,14 @@
   font-weight: var(--font-weight-medium) !important;
   color: var(--color-white) !important;
   padding: var(--spacing-sm) !important;
+  text-align: center;
+  transform: translateY(-100px);
+  position: relative;
+  z-index: 600;
 
 }
 
-.carousel .control-arrow {
+.choir-member .control-arrow {
   background: var(--color-primary) !important;
   height: 40px;
   width: 40px;
@@ -50,18 +60,19 @@
   transition: opacity var(--transition-speed) !important;
 }
 
-.carousel .dot{
+.choir-member .dot{
   display: none !important;
 }
 
-.carousel .control-arrow:hover {
+.choir-member .control-arrow:hover {
   opacity: 1 !important;
 }
 
 @media (max-width: 520px) {
   .choir-member .img {
-   /* aspect-ratio: ; */
+    max-height: 60vh;
+    aspect-ratio: auto;
   }
   .choir-member { margin: 6px; }
-  .carousel .control-arrow { height: 36px; width: 36px; }
+  .choir-member .control-arrow { height: 36px; width: 36px; }
 }
