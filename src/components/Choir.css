@@ -9,33 +9,25 @@
 
 .choir-member {
   cursor: grab;
-  border-radius: var(--border-radius-lg) !important;
   min-width: 200px;
   aspect-ratio: 1080/1218 !important;
   margin: 10px;
   position: relative; 
-  background: url(../assets/loading_animation.gif);
-  box-shadow: var(--shadow-card-light);
-  background-color: rgb(4, 0, 18);
-  background-position: top bottom;
-  background-size:contain;
-  background-repeat: no-repeat;
-   transition: 
-    transform var(--transition-speed) var(--transition-ease),
-    box-shadow var(--transition-speed) var(--transition-ease),
-    all var(--transition-speed) var(--transition-ease);
 }
 
 .choir-member .img {
   width: 100%;
   aspect-ratio: 1080/1218 !important;
   background-size: cover !important;
-  background-repeat: no-repeat !important;
+  background-repeat: no-repeat;
   border-radius: var(--border-radius-lg);
-  border: 2px solid white;
+  box-shadow: var(--shadow-card-light);
+  transition: 
+    transform var(--transition-speed) var(--transition-ease),
+    box-shadow var(--transition-speed) var(--transition-ease);
 }
 
-.choir-member:hover {
+.choir-member .img:hover {
   transform: scale(0.97);
   box-shadow: var(--shadow-card-hover);
 }
