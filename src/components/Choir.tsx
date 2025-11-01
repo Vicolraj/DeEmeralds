@@ -38,7 +38,7 @@ export default function Choir()  {
                     }}
                     spaceBetween={16}
                     loop={true}
-                    autoplay={{ delay: 2000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+                    autoplay={{ delay: 7000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                     pagination={{ clickable: true }}
                     breakpoints={{
                         620: { slidesPerView: 1 },
