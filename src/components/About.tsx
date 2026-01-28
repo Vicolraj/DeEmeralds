@@ -20,7 +20,7 @@ const About = () => {
             transition={{ duration: 1 , ease: 'backInOut'}}
           >
             <img src={founderImg} alt="Founder" />
-            <small className='name'>ICON (DR) ENG. Oluwagbenga Akinfolarin O.</small>
+            <small className='name'>ICON (Dr) Olugbenga Obagbemi</small>
           </motion.div>
           <motion.div 
             className="about-text"
