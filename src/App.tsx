@@ -1,62 +1,44 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Choir from './components/Choir';
-import Gallery from './components/Gallery';
-import Videos from './components/Videos';
-import Rehearsal from './components/Rehearsal';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-// import AudioPlayer from './components/AudioPlayer';
-
-import './App.css';
-import { createContext, useEffect, useState} from 'react';
-
-
-export type memberType = {Name: string, Picture: string, Position?: string}[];
-export const MembersCtx = createContext<memberType>([]);
-
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Lenis from 'lenis';
+import Home from './pages/Home';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
-        const [members, setMembers] = useState<memberType>([]);
+  useEffect(() => {
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
 
-    useEffect(
-      () => {
-        fetch(import.meta.env.VITE_API)
-          .then((res) => {
-            if (!res.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return res.json();
-          })
-          .then((data) => {
-            setMembers(data);
-          })
-          .catch((error) => {
-            console.error('Error fetching data:', error);
-          });
-      },
-      []
-  );
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
-    <MembersCtx.Provider value={members}>
-    <div className="App">
-      {/*<AudioPlayer />*/}
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Choir />
-        <Gallery />
-  <Videos />
-        <Rehearsal />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
-
-    </MembersCtx.Provider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
