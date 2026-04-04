@@ -29,6 +29,10 @@ app.use('/api/rehearsals', rehearsalRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/socials', socialRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+export default app;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+}

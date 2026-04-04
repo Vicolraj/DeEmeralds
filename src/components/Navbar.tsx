@@ -31,7 +31,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-10 flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-3 group">
             <img src={logo} alt="De Emeralds" className="w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110" />
@@ -41,7 +41,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-10">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.title}
@@ -88,7 +88,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <nav className="flex flex-col items-center gap-6">
+            <nav className="flex flex-col items-center gap-10">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.title}

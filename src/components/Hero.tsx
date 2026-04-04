@@ -31,10 +31,10 @@ export default function Hero() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 12 + 8,
-        speedX: (Math.random() - 0.5) * 0.4,
-        speedY: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.4 + 0.1,
+        size: Math.random() * 20 + 18,  // 18–38px — clearly visible musical notes
+        speedX: (Math.random() - 0.5) * 0.35,
+        speedY: (Math.random() - 0.5) * 0.35,
+        opacity: Math.random() * 0.35 + 0.1,
         pulse: Math.random() * Math.PI * 2,
         char: chars[Math.floor(Math.random() * chars.length)],
       });
@@ -42,6 +42,7 @@ export default function Hero() {
 
     let animId: number;
     const animate = () => {
+      ctx.textAlign = 'center';
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.font = '16px serif';
       particles.forEach((p) => {
