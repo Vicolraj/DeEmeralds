@@ -5,6 +5,8 @@ import authRoutes from './routes/auth';
 import memberRoutes from './routes/members';
 import videoRoutes from './routes/videos';
 import rehearsalRoutes from './routes/rehearsals';
+import statsRoutes from './routes/stats';
+import socialRoutes from './routes/socials';
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use('/api/admin', authRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/videos', videoRoutes);
 app.use('/api/rehearsals', rehearsalRoutes);
+app.use('/api/stats', statsRoutes);
+app.use('/api/socials', socialRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);

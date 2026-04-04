@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getMembers, getVideos, getRehearsals } from '../lib/api';
+import { getMembers, getVideos, getRehearsals, getStats, getSocialLinks } from '../lib/api';
 import type { Member, YouTubeVideo, Rehearsal } from '../lib/types';
 
 // ── useMembers ─────────────────────────────────
@@ -48,4 +48,28 @@ export function useRehearsals() {
   }, []);
 
   return { rehearsals, loading, error, setRehearsals };
+}
+
+// ── useStats ───────────────────────────────────
+export function useStats() {
+  const [stats, setStats] = useState<{ songsCount: number; eventsCount: number } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getStats().then(setStats).finally(() => setLoading(false));
+  }, []);
+
+  return { stats, loading };
+}
+
+// ── useSocials ─────────────────────────────────
+export function useSocials() {
+  const [socials, setSocials] = useState<{ id: number; platform: string; url: string; iconKey: string }[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getSocialLinks().then(setSocials).finally(() => setLoading(false));
+  }, []);
+
+  return { socials, loading };
 }

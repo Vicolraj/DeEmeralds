@@ -46,4 +46,37 @@ export const updateRehearsal = (id: number, data: Partial<Rehearsal>) =>
 export const deleteRehearsal = (id: number) =>
   api.delete(`/rehearsals/${id}`).then(r => r.data);
 
+// ── Admin: Management ────────────────────────
+export const getAdminUsers = () =>
+  api.get('/admin/users').then(r => r.data);
+
+export const createAdminUser = (data: any) =>
+  api.post('/admin/register', data).then(r => r.data);
+
+export const deleteAdminUser = (id: number) =>
+  api.delete(`/admin/users/${id}`).then(r => r.data);
+
+// ── Admin: Stats ─────────────────────────────
+export const getStats = () =>
+  api.get('/stats').then(r => r.data);
+
+export const updateStats = (data: { songsCount: number; eventsCount: number }) =>
+  api.put('/stats', data).then(r => r.data);
+
+// ── Admin: Socials ───────────────────────────
+export const getSocialLinks = () =>
+  api.get('/socials').then(r => r.data);
+
+export const getAllSocialLinks = () =>
+  api.get('/socials/all').then(r => r.data);
+
+export const updateSocialLink = (id: number, data: any) =>
+  api.put(`/socials/${id}`, data).then(r => r.data);
+
+export const createSocialLink = (data: any) =>
+  api.post('/socials', data).then(r => r.data);
+
+export const deleteSocialLink = (id: number) =>
+  api.delete(`/socials/${id}`).then(r => r.data);
+
 export default api;

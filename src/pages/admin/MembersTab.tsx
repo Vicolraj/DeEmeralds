@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import imageCompression from 'browser-image-compression';
 import { getMembers, createMember, updateMember, deleteMember } from '../../lib/api';
 import { uploadToCloudinary } from '../../lib/cloudinary';
 import { VOICE_ROLES } from '../../lib/constants';
@@ -72,14 +73,22 @@ export default function MembersTab() {
     setUploadPercent(0);
 
     try {
-      const result = await uploadToCloudinary(file, (p) => setUploadPercent(p));
-      if (result.width < 400 || result.height < 400) {
-          alert('Warning: Image resolution is lower than recommended (400x400px). The quality might be poor on the portrait cards.');
-      }
+      // ── Compression Opts (WhatsApp-Style < 90KB) ──
+      const options = {
+        maxSizeMB: 0.09, // 90KB
+        maxWidthOrHeight: 1024,
+        useWebWorker: true,
+        initialQuality: 0.7,
+      };
+
+      const compressedFile = await imageCompression(file, options);
+      console.log(`Original: ${file.size / 1024}KB, Compressed: ${compressedFile.size / 1024}KB`);
+
+      const result = await uploadToCloudinary(compressedFile, (p) => setUploadPercent(p));
       setPhotoUrl(result.url);
       setPhotoPublicId(result.publicId);
     } catch (err) {
-      alert('Photo upload failed. Check Cloudinary configuration.');
+      alert('Photo optimization or upload failed.');
     } finally {
       setUploading(false);
     }

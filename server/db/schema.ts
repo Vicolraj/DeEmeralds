@@ -28,3 +28,26 @@ export const rehearsals = pgTable('rehearsals', {
   location: text('location').notNull(),
   displayOrder: integer('display_order').default(0),
 });
+
+export const admins = pgTable('admins', {
+  id: serial('id').primaryKey(),
+  username: varchar('username', { length: 50 }).notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  role: varchar('role', { length: 20 }).default('admin'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const siteStats = pgTable('site_stats', {
+  id: serial('id').primaryKey(),
+  songsCount: integer('songs_count').default(25),
+  eventsCount: integer('events_count').default(100),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const socialLinks = pgTable('social_links', {
+  id: serial('id').primaryKey(),
+  platform: varchar('platform', { length: 50 }).notNull(),
+  url: text('url'),
+  iconKey: varchar('icon_key', { length: 50 }), // e.g. 'facebook', 'instagram'
+  displayOrder: integer('display_order').default(0),
+});

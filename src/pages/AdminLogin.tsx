@@ -5,6 +5,7 @@ import { adminLogin } from '../lib/api';
 import logo from '../assets/img/logo_nobg.webp';
 
 export default function AdminLogin() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +17,7 @@ export default function AdminLogin() {
     setError(null);
 
     try {
-      const { token } = await adminLogin('admin', password);
+      const { token } = await adminLogin(username, password);
       localStorage.setItem('de_emeralds_token', token);
       navigate('/admin/dashboard');
     } catch (err: any) {
@@ -41,6 +42,20 @@ export default function AdminLogin() {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
+          <div>
+            <label className="block font-body text-gold-500/60 text-xs uppercase tracking-widest mb-2">
+              Username
+            </label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 px-4 py-3 text-white focus:border-gold-500/50 outline-none transition-colors rounded-sm"
+              placeholder="e.g. administrator"
+              required
+            />
+          </div>
+
           <div>
             <label className="block font-body text-gold-500/60 text-xs uppercase tracking-widest mb-2">
               Secret Passkey

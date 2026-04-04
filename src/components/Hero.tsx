@@ -23,39 +23,41 @@ export default function Hero() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number; pulse: number }[] = [];
-    const count = Math.min(80, Math.floor(window.innerWidth / 15));
+    const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number; pulse: number; char: string }[] = [];
+    const count = Math.min(120, Math.floor(window.innerWidth / 10));
+    const chars = ['♪', '♫', '♬', '♩'];
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.5 + 0.1,
+        size: Math.random() * 12 + 8,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.4 + 0.1,
         pulse: Math.random() * Math.PI * 2,
+        char: chars[Math.floor(Math.random() * chars.length)],
       });
     }
 
     let animId: number;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.font = '16px serif';
       particles.forEach((p) => {
         p.x += p.speedX;
         p.y += p.speedY;
-        p.pulse += 0.02;
-        const currentOpacity = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
+        p.pulse += 0.015;
+        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        if (p.x < -20) p.x = canvas.width + 20;
+        if (p.x > canvas.width + 20) p.x = -20;
+        if (p.y < -20) p.y = canvas.height + 20;
+        if (p.y > canvas.height + 20) p.y = -20;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.font = `${p.size}px Cormorant Garamond, serif`;
         ctx.fillStyle = `rgba(201, 168, 76, ${currentOpacity})`;
-        ctx.fill();
+        ctx.fillText(p.char, p.x, p.y);
       });
       animId = requestAnimationFrame(animate);
     };
@@ -126,10 +128,10 @@ export default function Hero() {
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-[1]" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <h1 ref={titleRef} className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-white font-light tracking-wide leading-tight" style={{ perspective: '800px' }}>
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-10">
+        <h1 ref={titleRef} className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white font-light tracking-wider leading-[1.1]" style={{ perspective: '1000px' }}>
           {/* First line */}
-          <span className="block">
+          <span className="block mb-4">
             {titleText.split('').map((char, i) => (
               <span
                 key={`t1-${i}`}
@@ -141,7 +143,7 @@ export default function Hero() {
             ))}
           </span>
           {/* Second line */}
-          <span className="block text-gold-400 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-2">
+          <span className="block text-gold-400 text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-4">
             {subtitleText.split('').map((char, i) => (
               <span
                 key={`t2-${i}`}
@@ -156,20 +158,20 @@ export default function Hero() {
 
         {/* Division tags */}
         <motion.p
-          className="mt-8 font-body text-white/60 text-sm md:text-base tracking-[0.3em] uppercase"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-14 font-body text-white/50 text-sm md:text-lg tracking-[0.4em] uppercase"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4.5, duration: 0.8 }}
+          transition={{ delay: 4.8, duration: 1 }}
         >
           Chorale · Live Band · Charity · Academy
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-16 flex flex-col sm:flex-row gap-8"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 5, duration: 0.8 }}
+          transition={{ delay: 5.2, duration: 1 }}
         >
           <a
             href="#members"

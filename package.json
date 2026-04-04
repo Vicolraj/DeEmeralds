@@ -7,6 +7,7 @@
     "dev": "vite",
     "server": "tsx watch server/index.ts",
     "db:push": "drizzle-kit push",
+    "db:seed": "tsx scripts/seed-admin.ts",
     "db:studio": "drizzle-kit studio",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
