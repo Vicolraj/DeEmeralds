@@ -5,9 +5,10 @@ import MembersTab from './admin/MembersTab.tsx';
 import VideosTab from './admin/VideosTab.tsx';
 import RehearsalsTab from './admin/RehearsalsTab.tsx';
 import AdminsTab from './admin/AdminsTab.tsx';
+import SettingsTab from './admin/SettingsTab.tsx';
 import logo from '../assets/img/logo_nobg.webp';
 
-type Tab = 'members' | 'videos' | 'rehearsals' | 'admins';
+type Tab = 'members' | 'videos' | 'rehearsals' | 'admins' | 'settings';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('members');
@@ -30,6 +31,7 @@ export default function AdminDashboard() {
     { id: 'videos', label: 'Videos' },
     { id: 'rehearsals', label: 'Rehearsals' },
     { id: 'admins', label: 'Admins' },
+    { id: 'settings', label: 'Settings' },
   ];
 
   return (
@@ -91,6 +93,7 @@ export default function AdminDashboard() {
               {activeTab === 'videos' && <VideosTab />}
               {activeTab === 'rehearsals' && <RehearsalsTab />}
               {activeTab === 'admins' && <AdminsTab />}
+              {activeTab === 'settings' && <SettingsTab />}
             </motion.div>
           </AnimatePresence>
         </main>

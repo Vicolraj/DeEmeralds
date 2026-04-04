@@ -6,45 +6,51 @@ export default function MembersSection() {
   const { members, loading, error } = useMembers();
 
   return (
-    <section id="members" className="relative py-24 md:py-32 bg-gradient-dark overflow-hidden">
+    <section id="members" className="relative py-32 md:py-48 bg-gradient-dark overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-display text-4xl md:text-6xl text-white font-light mb-4">
+          <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
             Meet Our <span className="text-gold-400">Members</span>
           </h2>
-          <div className="section-divider" />
-          <p className="font-body text-white/50 mt-6 max-w-xl mx-auto">
+          <motion.div
+            className="section-divider mt-8"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: false }}
+            transition={{ duration: 1.5, ease: 'circOut' }}
+          />
+          <p className="font-body text-white/50 mt-10 max-w-xl mx-auto text-lg tracking-wide">
             The talented voices and instrumentalists behind De Emeralds Perfect Expression
           </p>
         </motion.div>
 
         {/* Loading State */}
         {loading && (
-          <div className="flex justify-center py-20">
-            <div className="w-10 h-10 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
+          <div className="flex justify-center py-24">
+            <div className="w-12 h-12 border-2 border-gold-500/30 border-t-gold-500 rounded-full animate-spin" />
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="text-center py-20">
-            <p className="font-body text-white/40">Unable to load members at this time.</p>
+          <div className="text-center py-24">
+            <p className="font-body text-white/40 text-lg">Unable to load members at this time.</p>
           </div>
         )}
 
-        {/* Members Grid — Masonry-style with varied sizes */}
+        {/* Members Grid */}
         {!loading && !error && members.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
             {members.map((member, index) => (
               <MemberCard key={member.id} member={member} index={index} />
             ))}
@@ -53,8 +59,8 @@ export default function MembersSection() {
 
         {/* Empty State */}
         {!loading && !error && members.length === 0 && (
-          <div className="text-center py-20">
-            <p className="font-body text-white/40">No members to display yet. Check back soon!</p>
+          <div className="text-center py-24">
+            <p className="font-body text-white/40 text-lg">No members to display yet. Check back soon!</p>
           </div>
         )}
       </div>
