@@ -24,17 +24,17 @@ export default function Hero() {
     canvas.height = window.innerHeight;
 
     const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number; pulse: number; char: string }[] = [];
-    const count = Math.min(120, Math.floor(window.innerWidth / 10));
+    const count = Math.min(250, Math.floor(window.innerWidth / 5));
     const chars = ['♪', '♫', '♬', '♩'];
 
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 20 + 18,  // 18–38px — clearly visible musical notes
-        speedX: (Math.random() - 0.5) * 0.35,
-        speedY: (Math.random() - 0.5) * 0.35,
-        opacity: Math.random() * 0.35 + 0.1,
+        size: Math.random() * 24 + 24,  // 24–48px — even more prominent musical notes
+        speedX: (Math.random() - 0.5) * 0.45,
+        speedY: (Math.random() - 0.5) * 0.45,
+        opacity: Math.random() * 0.4 + 0.2, // 0.2–0.6 — stronger presence
         pulse: Math.random() * Math.PI * 2,
         char: chars[Math.floor(Math.random() * chars.length)],
       });

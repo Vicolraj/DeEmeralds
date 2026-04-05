@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import MemberCard from './MemberCard';
 import { useMembers } from '../hooks/useData';
+import SubtleNotes from './SubtleNotes';
 
 export default function MembersSection() {
   const { members, loading, error } = useMembers();
 
   return (
     <section id="members" className="relative py-32 md:py-48 bg-gradient-dark overflow-hidden">
+      <SubtleNotes />
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
 

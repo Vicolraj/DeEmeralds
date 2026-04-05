@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
 import { useVideos } from '../hooks/useData';
+import SubtleNotes from './SubtleNotes';
 
 export default function Videos() {
   const { videos, loading, error } = useVideos();
 
   return (
     <section id="videos" className="relative py-32 md:py-48 bg-emerald-950 overflow-hidden">
+      <SubtleNotes />
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-3xl pointer-events-none" />
 

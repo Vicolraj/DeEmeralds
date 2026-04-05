@@ -6,6 +6,7 @@ import {
 } from 'react-icons/fa';
 import { CONTACT, GOOGLE_MAP_EMBED_URL } from '../lib/constants';
 import { useRehearsals, useSocials } from '../hooks/useData';
+import SubtleNotes from './SubtleNotes';
 
 const ICON_MAP: Record<string, React.ReactElement> = {
   facebook:      <FaFacebookF />,
@@ -32,6 +33,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-32 md:py-48 bg-gradient-dark overflow-hidden">
+      <SubtleNotes />
       <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
         <motion.div

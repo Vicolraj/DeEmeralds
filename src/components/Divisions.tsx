@@ -4,6 +4,7 @@ import { DIVISIONS } from '../lib/constants';
 import {
   FaMusic, FaGuitar, FaHeart, FaGraduationCap
 } from 'react-icons/fa';
+import SubtleNotes from './SubtleNotes';
 
 const DIVISION_ICONS: Record<string, React.ReactElement> = {
   'De Emeralds Chorale':       <FaMusic className="text-3xl text-gold-500" />,
@@ -15,6 +16,7 @@ const DIVISION_ICONS: Record<string, React.ReactElement> = {
 export default function Divisions() {
   return (
     <section id="divisions" className="relative py-32 md:py-48 bg-gradient-section overflow-hidden">
+      <SubtleNotes />
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `radial-gradient(circle at 20% 80%, rgba(201, 168, 76, 0.3) 0%, transparent 50%),
