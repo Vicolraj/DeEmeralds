@@ -29,7 +29,7 @@ app.use('/api/rehearsals', rehearsalRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/socials', socialRoutes);
 
-
+// Vercel serverless export — must be at module level
 export default app;
 
 if (process.env.NODE_ENV !== 'production') {

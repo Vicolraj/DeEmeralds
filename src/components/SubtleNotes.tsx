@@ -49,10 +49,10 @@ export default function SubtleNotes() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 12 + 18, // 18-30px — slightly larger to be noticed
+        size: Math.random() * 12 + 18, // 18-30px
         speedX: (Math.random() - 0.5) * 0.3,
         speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.2 + 0.15, // 0.15 - 0.35 — clearly present
+        opacity: 0.5, // Sharp 0.5 as requested
         pulse: Math.random() * Math.PI * 2,
         char: chars[Math.floor(Math.random() * chars.length)],
         color: colors[Math.floor(Math.random() * colors.length)],

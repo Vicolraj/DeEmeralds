@@ -21,7 +21,8 @@ export default function AdminLogin() {
       localStorage.setItem('de_emeralds_token', token);
       navigate('/admin/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Login failed. Please try again.');
+      const errorMsg = err.response?.data?.error;
+      setError(typeof errorMsg === 'string' ? errorMsg : err.message || 'Login failed.');
     } finally {
       setLoading(false);
     }
