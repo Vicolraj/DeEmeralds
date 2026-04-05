@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, animate } from 'framer-motion';
 import founderImg from '../assets/img/founder.jpg';
 import { useMembers, useStats } from '../hooks/useData';
+import SubtleNotes from '../components/SubtleNotes';
 
 function Counter({ target, label }: { target: number; label: string }) {
   const [count, setCount] = useState(0);
@@ -42,6 +43,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-32 md:py-48 bg-gradient-section overflow-hidden">
+      <SubtleNotes />
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5" style={{
         backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(201, 168, 76, 0.15) 0%, transparent 50%)',

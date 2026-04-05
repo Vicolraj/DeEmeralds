@@ -17,6 +17,11 @@ export default function SubtleNotes() {
       }
     };
 
+    const resizeObserver = new ResizeObserver(() => setCanvasSize());
+    if (canvas.parentElement) {
+      resizeObserver.observe(canvas.parentElement);
+    }
+
     setCanvasSize();
 
     const particles: { 
@@ -31,7 +36,8 @@ export default function SubtleNotes() {
       color: string;
     }[] = [];
     
-    const count = 40;
+    // Increased count and visibility slightly
+    const count = 60;
     const chars = ['♪', '♫', '♬', '♩'];
     const colors = [
       '201, 168, 76',  // Gold
@@ -43,10 +49,10 @@ export default function SubtleNotes() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 8 + 14, // 14-22px
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.08 + 0.04, // Very subtle: 0.04 - 0.12
+        size: Math.random() * 12 + 18, // 18-30px — slightly larger to be noticed
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.2 + 0.15, // 0.15 - 0.35 — clearly present
         pulse: Math.random() * Math.PI * 2,
         char: chars[Math.floor(Math.random() * chars.length)],
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -60,36 +66,34 @@ export default function SubtleNotes() {
         p.x += p.speedX;
         p.y += p.speedY;
         p.pulse += 0.01;
-        const currentOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
 
-        if (p.x < -20) p.x = canvas.width + 20;
-        if (p.x > canvas.width + 20) p.x = -20;
-        if (p.y < -20) p.y = canvas.height + 20;
-        if (p.y > canvas.height + 20) p.y = -20;
+        if (p.x < -40) p.x = canvas.width + 40;
+        if (p.x > canvas.width + 40) p.x = -40;
+        if (p.y < -40) p.y = canvas.height + 40;
+        if (p.y > canvas.height + 40) p.y = -40;
 
-        ctx.font = `${p.size}px Cormorant Garamond, serif`;
+        ctx.font = `${p.size}px serif`;
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = `rgba(${p.color}, 0.5)`;
         ctx.fillStyle = `rgba(${p.color}, ${currentOpacity})`;
         ctx.fillText(p.char, p.x, p.y);
+        ctx.shadowBlur = 0;
       });
       animId = requestAnimationFrame(animate);
     };
     animate();
 
-    const handleResize = () => {
-      setCanvasSize();
-    };
-    window.addEventListener('resize', handleResize);
-
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      resizeObserver.disconnect();
     };
   }, []);
 
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 pointer-events-none z-0 opacity-60"
+      className="absolute inset-0 w-full h-full pointer-events-none z-[1] opacity-80"
     />
   );
 }
