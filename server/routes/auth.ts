@@ -14,7 +14,14 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const [adminUser] = await db.select().from(admins).where(eq(admins.username, username)).limit(1);
+    const timeout = new Promise<never>((_, reject) => 
+        setTimeout(() => reject(new Error('DATABASE_TIMEOUT')), 5000)
+    );
+
+    const [adminUser] = await Promise.race([
+        db.select().from(admins).where(eq(admins.username, username)).limit(1),
+        timeout
+    ]);
 
     if (!adminUser) {
       return res.status(401).json({ error: 'Account not found' });
@@ -27,9 +34,14 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ id: adminUser.id, username: adminUser.username, role: adminUser.role }, JWT_SECRET, { expiresIn: '24h' });
-    res.json({ token, user: { username: adminUser.username, role: adminUser.role } });
-  } catch (err) {
-    res.status(500).json({ error: 'Login service failure' });
+    res.json({ token, user: { id: adminUser.id, username: adminUser.username, role: adminUser.role } });
+
+  } catch (err: any) {
+    console.error('Login error:', err);
+    if (err.message === 'DATABASE_TIMEOUT') {
+      return res.status(504).json({ error: 'Database Timeout', details: 'Neon database is taking too long to respond. It might be down or scaling.' });
+    }
+    res.status(500).json({ error: 'Login service failure', details: err.message });
   }
 });
 

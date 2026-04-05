@@ -5,7 +5,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function seed() {
-  const username = process.argv[2] || 'vicolraj';
+  const username = process.argv[2] || 'admin';
   const password = process.argv[3] || 'DeEmeralds2026!'; // Strong default
 
   console.log(`Seeding admin user: ${username}...`);

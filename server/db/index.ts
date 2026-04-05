@@ -5,10 +5,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-if (!process.env.DATABASE_URL) {
-  console.error('DATABASE_URL is not set');
+const dbUrl = process.env.DATABASE_URL;
+
+if (!dbUrl) {
+  console.error('CRITICAL: DATABASE_URL is missing! Queries will fail.');
 }
 
 // Standard robustness for Vercel: ensure neon() is called with a string even if env var is temporarily missing
-const sql = neon(process.env.DATABASE_URL || '');
-export const db = drizzle(sql, { schema });
+const sql_conn = neon(dbUrl || '');
+export const db = drizzle(sql_conn, { schema });
