@@ -44,6 +44,15 @@ router.put('/:id', authenticateToken, async (req, res) => {
   const id = parseInt(req.params.id as string);
   const { firstName, middleName, lastName, role, photoUrl, photoPublicId, displayOrder } = req.body;
   try {
+    // 1. Get existing member to check for old photo
+    const [existing] = await db.select().from(members).where(eq(members.id, id)).limit(1);
+    
+    // 2. If photo is being replaced, delete the old one from Cloudinary
+    if (existing && existing.photoPublicId && existing.photoPublicId !== photoPublicId) {
+      await deleteFromCloudinary(existing.photoPublicId);
+    }
+
+    // 3. Update in DB
     const [updated] = await db.update(members)
       .set({ 
         firstName, 
@@ -59,6 +68,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
       .returning();
     res.json(updated);
   } catch (err) {
+    console.error('Update member error:', err);
     res.status(500).json({ error: 'Failed to update member' });
   }
 });
