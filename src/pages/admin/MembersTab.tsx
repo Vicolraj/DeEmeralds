@@ -5,13 +5,14 @@ import { getMembers, createMember, updateMember, deleteMember } from '../../lib/
 import { uploadToCloudinary } from '../../lib/cloudinary';
 import { VOICE_ROLES } from '../../lib/constants';
 import type { Member, VoiceRole } from '../../lib/types';
-import { FaPlus, FaEdit, FaTrash, FaTimes, FaCamera } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaTimes, FaCamera, FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 export default function MembersTab() {
   const [members, setMembers] = useState<Member[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingMember, setEditingMember] = useState<Member | null>(null);
+  const [isReordering, setIsReordering] = useState(false);
 
   // Form State
   const [firstName, setFirstName] = useState('');
@@ -32,11 +33,46 @@ export default function MembersTab() {
     try {
       // In Admin, we want to see ALL members including those without accounts
       const data = await getMembers(true); 
-      setMembers(data);
+      const sorted = [...data].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
+      setMembers(sorted);
     } catch (err) {
       console.error('Error fetching members:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleMove = async (index: number, direction: 'up' | 'down') => {
+    if (isReordering) return;
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
+    if (newIndex < 0 || newIndex >= members.length) return;
+
+    setIsReordering(true);
+    const updatedMembers = [...members];
+    const current = updatedMembers[index];
+    const neighbor = updatedMembers[newIndex];
+
+    // Swap displayOrder
+    const tempOrder = current.displayOrder;
+    current.displayOrder = neighbor.displayOrder;
+    neighbor.displayOrder = tempOrder;
+
+    // Optimistic UI update
+    updatedMembers[index] = neighbor;
+    updatedMembers[newIndex] = current;
+    setMembers(updatedMembers);
+
+    try {
+      // Persist both changes
+      await Promise.all([
+        updateMember(current.id, { displayOrder: current.displayOrder }),
+        updateMember(neighbor.id, { displayOrder: neighbor.displayOrder })
+      ]);
+    } catch (err) {
+      alert('Failed to save new order.');
+      fetchMembers(); // Revert on failure
+    } finally {
+      setIsReordering(false);
     }
   };
 
@@ -163,8 +199,28 @@ export default function MembersTab() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {members.map((member) => (
+          {members.map((member, index) => (
             <div key={member.id} className="glass p-4 rounded-lg flex items-center gap-4 group">
+              {/* Reordering Buttons */}
+              <div className="flex flex-col gap-1 border-r border-white/5 pr-2 mr-1">
+                <button
+                  onClick={() => handleMove(index, 'up')}
+                  disabled={index === 0 || isReordering}
+                  className="p-1.5 text-white/20 hover:text-gold-500 disabled:opacity-0 transition-all rounded hover:bg-white/5"
+                  title="Move Up"
+                >
+                  <FaArrowUp className="text-xs" />
+                </button>
+                <button
+                  onClick={() => handleMove(index, 'down')}
+                  disabled={index === members.length - 1 || isReordering}
+                  className="p-1.5 text-white/20 hover:text-gold-500 disabled:opacity-0 transition-all rounded hover:bg-white/5"
+                  title="Move Down"
+                >
+                  <FaArrowDown className="text-xs" />
+                </button>
+              </div>
+
               <div className="w-16 h-20 rounded bg-emerald-900/50 overflow-hidden flex-shrink-0">
                 {member.photoUrl ? (
                   <img src={member.photoUrl} alt="" className="w-full h-full object-cover object-top" />

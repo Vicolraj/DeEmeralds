@@ -12,7 +12,6 @@ export default function MembersSection() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [carouselConstraints, setCarouselConstraints] = useState(0);
 
   // Filter logic
   const filteredMembers = members.filter((member) => {
@@ -29,13 +28,6 @@ export default function MembersSection() {
   // Top subset for carousel (limit to 10 for performance)
   const carouselMembers = filteredMembers.slice(0, 10);
 
-  useEffect(() => {
-    if (carouselRef.current) {
-      const scrollWidth = carouselRef.current.scrollWidth;
-      const offsetWidth = carouselRef.current.offsetWidth;
-      setCarouselConstraints(Math.min(0, offsetWidth - scrollWidth));
-    }
-  }, [filteredMembers, loading]);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
