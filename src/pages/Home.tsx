@@ -8,9 +8,7 @@ import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import CustomCursor from '../components/CustomCursor';
-import Preloader from '../components/Preloader';
 import Sparkles from '../components/Sparkles';
-import { motion } from 'framer-motion';
 
 export default function Home() {
   return (

@@ -30,7 +30,8 @@ export default function MembersTab() {
 
   const fetchMembers = async () => {
     try {
-      const data = await getMembers();
+      // In Admin, we want to see ALL members including those without accounts
+      const data = await getMembers(true); 
       setMembers(data);
     } catch (err) {
       console.error('Error fetching members:', err);

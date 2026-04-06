@@ -113,7 +113,15 @@ router.put('/me', authenticateToken, async (req: any, res) => {
     const { firstName, middleName, lastName, role, photoUrl, photoPublicId } = req.body;
 
     const [updated] = await db.update(members)
-      .set({ firstName, middleName, lastName, role, photoUrl, photoPublicId, updatedAt: new Date() })
+      .set({ 
+        firstName, 
+        middleName: middleName || null, 
+        lastName, 
+        role, 
+        photoUrl: photoUrl || null, 
+        photoPublicId: photoPublicId || null, 
+        updatedAt: new Date() 
+      })
       .where(eq(members.id, account.memberId))
       .returning();
 

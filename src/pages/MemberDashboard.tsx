@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaUser, FaLock, FaCamera, FaSave, FaSignOutAlt, 
-  FaChevronRight, FaInfoCircle, FaShieldAlt
+  FaInfoCircle, FaShieldAlt
 } from 'react-icons/fa';
 import imageCompression from 'browser-image-compression';
 import { uploadToCloudinary } from '../lib/cloudinary';

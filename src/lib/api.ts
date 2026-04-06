@@ -16,7 +16,7 @@ api.interceptors.request.use((config) => {
 });
 
 // ── Public endpoints ──────────────────────────
-export const getMembers = () => api.get<Member[]>('/members').then(r => r.data);
+export const getMembers = (all = false) => api.get<Member[]>(all ? '/members/all' : '/members').then(r => r.data);
 export const getVideos = () => api.get<YouTubeVideo[]>('/videos').then(r => r.data);
 export const getRehearsals = () => api.get<Rehearsal[]>('/rehearsals').then(r => r.data);
 
