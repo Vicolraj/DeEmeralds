@@ -16,10 +16,10 @@ export default function MemberCard({ member, index }: MemberCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, margin: '-50px' }}
-      transition={{ delay: index * 0.06, duration: 0.6, ease: 'easeOut' }}
+      viewport={{ once: false, margin: '-20px' }}
+      transition={{ delay: index * 0.03, duration: 0.4, ease: 'easeOut' }}
       whileHover={{ y: -10 }}
       className="relative overflow-hidden rounded-lg group cursor-pointer"
       style={{ aspectRatio: '3 / 4' }}

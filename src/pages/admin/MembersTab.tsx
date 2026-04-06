@@ -238,7 +238,7 @@ export default function MembersTab() {
                   {member.role}
                 </p>
               </div>
-              <div className="flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex flex-col gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                 <button
                    onClick={() => openEditModal(member)}
                    className="p-2 text-white/40 hover:text-gold-400 transition-colors"
