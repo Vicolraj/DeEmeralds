@@ -4,12 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import MembersTab from './admin/MembersTab.tsx';
 import VideosTab from './admin/VideosTab.tsx';
 import RehearsalsTab from './admin/RehearsalsTab.tsx';
-import MemberAccountsTab from './admin/MemberAccountsTab.tsx';
 import AdminsTab from './admin/AdminsTab.tsx';
 import SettingsTab from './admin/SettingsTab.tsx';
 import logo from '../assets/img/logo_nobg.webp';
 
-type Tab = 'members' | 'videos' | 'rehearsals' | 'accounts' | 'admins' | 'settings';
+type Tab = 'members' | 'videos' | 'rehearsals' | 'admins' | 'settings';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('members');
@@ -93,7 +92,6 @@ export default function AdminDashboard() {
               {activeTab === 'members' && <MembersTab />}
               {activeTab === 'videos' && <VideosTab />}
               {activeTab === 'rehearsals' && <RehearsalsTab />}
-              {activeTab === 'accounts' && <MemberAccountsTab />}
               {activeTab === 'admins' && <AdminsTab />}
               {activeTab === 'settings' && <SettingsTab />}
             </motion.div>

@@ -42,7 +42,7 @@ export default function About() {
   const { stats } = useStats();
 
   return (
-    <section id="about" className="relative py-32 md:py-48 bg-gradient-section overflow-hidden">
+    <section id="about" className="relative py-12 md:py-16 bg-gradient-section overflow-hidden">
       <SubtleNotes />
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5" style={{
@@ -52,17 +52,17 @@ export default function About() {
       <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: false, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
             About <span className="text-gold-400">De Emeralds</span>
           </h2>
           <motion.div 
-            className="section-divider mt-8"
+            className="section-divider mt-6"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: false }}
@@ -71,7 +71,7 @@ export default function About() {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Founder Image */}
           <motion.div
             className="relative"

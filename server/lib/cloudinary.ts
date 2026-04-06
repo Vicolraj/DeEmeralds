@@ -3,12 +3,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-cloudinary.config({
-  cloud_name: process.env.VITE_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true
-});
+// Standard Cloudinary Node SDK behavior: 
+// It automatically picks up CLOUDINARY_URL from process.env if available.
+// No manual config({ ... }) is needed if that variable is set.
 
 /**
  * Delete an image from Cloudinary by its public ID
@@ -19,6 +16,7 @@ export async function deleteFromCloudinary(publicId: string): Promise<boolean> {
   
   try {
     const result = await cloudinary.uploader.destroy(publicId);
+    console.log(`Cloudinary deletion result for ${publicId}:`, result);
     return result.result === 'ok';
   } catch (error) {
     console.error('Cloudinary deletion error:', error);

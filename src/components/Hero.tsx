@@ -159,20 +159,20 @@ export default function Hero() {
 
         {/* Division tags */}
         <motion.p
-          className="mt-14 font-body text-white/50 text-sm md:text-lg tracking-[0.4em] uppercase"
+          className="mt-8 font-body text-white/50 text-sm md:text-lg tracking-[0.4em] uppercase"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 4.8, duration: 1 }}
+          transition={{ delay: 2.2, duration: 1 }}
         >
           Chorale · Live Band · Charity · Academy
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
-          className="mt-16 flex flex-col sm:flex-row gap-8"
-          initial={{ opacity: 0, y: 30 }}
+          className="mt-12 flex flex-col sm:flex-row gap-6"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 5.2, duration: 1 }}
+          transition={{ delay: 2.5, duration: 0.8 }}
         >
           <a
             href="#members"

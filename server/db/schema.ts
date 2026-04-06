@@ -2,17 +2,7 @@ import { pgTable, serial, varchar, text, timestamp, integer, boolean } from 'dri
 
 // ... existing tables ...
 
-export const memberAccounts = pgTable('member_accounts', {
-  id: serial('id').primaryKey(),
-  memberId: integer('member_id').references(() => members.id, { onDelete: 'cascade' }),
-  username: varchar('username', { length: 80 }).notNull().unique(), // their login (email or chosen name)
-  passwordHash: text('password_hash').notNull(),
-  isActive: boolean('is_active').default(true),
-  mustChangePassword: boolean('must_change_password').default(false), // true when admin creates the account
-  lastLogin: timestamp('last_login'),
-  createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow(),
-});
+// ... existing tables ...
 
 export const members = pgTable('members', {
   id: serial('id').primaryKey(),

@@ -1,44 +1,21 @@
 import { Router } from 'express';
 import { db } from '../db/index.js';
-import { members, memberAccounts } from '../db/schema.js';
+import { members } from '../db/schema.js';
 import { eq, asc } from 'drizzle-orm';
 import { authenticateToken } from '../middleware/auth.js';
 import { deleteFromCloudinary } from '../lib/cloudinary.js';
 
 const router = Router();
 
-// ── GET: List Registered Members (Public) ─────
-// Only shows members who have created an account
+// ── GET: List All Members (Public) ───────────
 router.get('/', async (req, res) => {
-  try {
-    const registeredMembers = await db.select({
-      id: members.id,
-      firstName: members.firstName,
-      middleName: members.middleName,
-      lastName: members.lastName,
-      role: members.role,
-      photoUrl: members.photoUrl,
-    })
-    .from(members)
-    .innerJoin(memberAccounts, eq(members.id, memberAccounts.memberId))
-    .orderBy(asc(members.lastName), asc(members.firstName));
-
-    res.json(registeredMembers);
-  } catch (err) {
-    console.error('Fetch members error:', err);
-    res.status(500).json({ error: 'Failed to fetch members' });
-  }
-});
-
-// ── GET: All Members for Admin (Protected) ─────
-router.get('/all', authenticateToken, async (req, res) => {
   try {
     const allMembers = await db.query.members.findMany({
       orderBy: [asc(members.displayOrder), asc(members.id)],
     });
     res.json(allMembers);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch all members' });
+    res.status(500).json({ error: 'Failed to fetch members' });
   }
 });
 

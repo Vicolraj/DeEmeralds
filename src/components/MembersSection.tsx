@@ -7,7 +7,7 @@ export default function MembersSection() {
   const { members, loading, error } = useMembers();
 
   return (
-    <section id="members" className="relative py-20 md:py-32 bg-emerald-950 overflow-hidden">
+    <section id="members" className="relative py-12 md:py-16 bg-emerald-950 overflow-hidden">
       <SubtleNotes />
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
@@ -15,23 +15,23 @@ export default function MembersSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
             Meet Our <span className="text-gold-400">Members</span>
           </h2>
           <motion.div
-            className="section-divider mt-8"
+            className="section-divider mt-6"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.5, ease: 'circOut' }}
           />
-          <p className="font-body text-white/50 mt-10 max-w-xl mx-auto text-lg tracking-wide">
+          <p className="font-body text-white/50 mt-8 max-w-xl mx-auto text-lg tracking-wide">
             The talented voices and instrumentalists behind De Emeralds Perfect Expression
           </p>
         </motion.div>
