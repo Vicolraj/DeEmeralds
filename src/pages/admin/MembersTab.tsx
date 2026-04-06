@@ -33,8 +33,12 @@ export default function MembersTab() {
     try {
       // In Admin, we want to see ALL members including those without accounts
       const data = await getMembers(true); 
-      const sorted = [...data].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
-      setMembers(sorted);
+      // Ensure all members have a valid displayOrder for consistent sorting
+      const fullyOrdered = data.map((m, idx) => ({
+        ...m,
+        displayOrder: typeof m.displayOrder === 'number' ? m.displayOrder : idx
+      })).sort((a, b) => a.displayOrder - b.displayOrder);
+      setMembers(fullyOrdered);
     } catch (err) {
       console.error('Error fetching members:', err);
     } finally {
@@ -49,19 +53,20 @@ export default function MembersTab() {
 
     setIsReordering(true);
     const updatedMembers = [...members];
-    const current = updatedMembers[index];
-    const neighbor = updatedMembers[newIndex];
-
-    // Swap displayOrder
+    // Swap displayOrder with safety checks
+    const current = { ...updatedMembers[index] };
+    const neighbor = { ...updatedMembers[newIndex] };
+    
     const tempOrder = current.displayOrder;
     current.displayOrder = neighbor.displayOrder;
     neighbor.displayOrder = tempOrder;
 
-    // Optimistic UI update
+    // Optimistic UI update — updated order property must be included in array
     updatedMembers[index] = neighbor;
     updatedMembers[newIndex] = current;
-    // CRITICAL: Sort by displayOrder to ensure UI reflects database state
-    setMembers([...updatedMembers].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0)));
+    
+    // Sort and set state
+    setMembers([...updatedMembers].sort((a, b) => a.displayOrder - b.displayOrder));
 
     try {
       // Persist both changes

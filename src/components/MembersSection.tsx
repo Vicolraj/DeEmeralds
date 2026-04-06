@@ -13,41 +13,58 @@ export default function MembersSection() {
 
   // Dynamic Categories from Data
   const categories = useMemo(() => {
-    const roles = members.map(m => m.role);
-    const uniqueRoles = Array.from(new Set(roles));
+    const roles = members.map(m => (m.role || '').toLowerCase());
     
     const cats = ['All'];
     
-    // Vocal Roles
-    ['Soprano', 'Alto', 'Tenor', 'Bass'].forEach(role => {
-      if (uniqueRoles.some(r => r.includes(role))) cats.push(role);
+    // Vocal Roles (Case-insensitive check)
+    if (roles.some(r => r.includes('soprano'))) cats.push('Soprano');
+    if (roles.some(r => r.includes('alto'))) cats.push('Alto');
+    if (roles.some(r => r.includes('tenor'))) cats.push('Tenor');
+    if (roles.some(r => r.includes('bass'))) cats.push('Bass');
+
+    // Band Group Keywords
+    const bandKeywords = ['keyboardist', 'drummer', 'guitarist', 'bassist', 'choreographer', 'band', 'instrumental'];
+    if (roles.some(r => bandKeywords.some(kw => r.includes(kw)))) cats.push('Band');
+
+    // Management Group Keywords
+    const mgmtKeywords = ['ceo', 'director', 'administrator', 'management', 'coordinator'];
+    if (roles.some(r => mgmtKeywords.some(kw => r.includes(kw)))) cats.push('Management');
+
+    // Add any other unique role that isn't already grouped
+    members.forEach(m => {
+      const r = (m.role || '').trim();
+      const lr = r.toLowerCase();
+      // If it doesn't fit in standard groups, add its literal name as a category
+      const isVoice = ['soprano', 'alto', 'tenor', 'bass'].some(v => lr.includes(v));
+      const isBand = bandKeywords.some(kw => lr.includes(kw));
+      const isMgmt = mgmtKeywords.some(kw => lr.includes(kw));
+
+      if (!isVoice && !isBand && !isMgmt && !cats.includes(r) && r !== '') {
+        cats.push(r);
+      }
     });
-
-    // Band Group
-    const bandRoles = ['Keyboardist', 'Drummer', 'Guitarist', 'Bassist', 'Choreographer'];
-    if (uniqueRoles.some(r => bandRoles.includes(r))) cats.push('Band');
-
-    // Management Group
-    const mgmtRoles = ['CEO', 'Director', 'Music Director', 'Administrator'];
-    if (uniqueRoles.some(r => mgmtRoles.includes(r))) cats.push('Management');
 
     return cats;
   }, [members]);
 
   // Filter logic
   const filteredMembers = useMemo(() => {
-    return members
+    return [...members]
       .filter((member) => {
+        const role = (member.role || '').toLowerCase();
         if (activeFilter === 'All') return true;
         if (activeFilter === 'Band') {
-          return ['Keyboardist', 'Drummer', 'Guitarist', 'Bassist', 'Choreographer'].includes(member.role);
+          const bandKeywords = ['keyboardist', 'drummer', 'guitarist', 'bassist', 'choreographer', 'band', 'instrumental'];
+          return bandKeywords.some(kw => role.includes(kw));
         }
         if (activeFilter === 'Management') {
-          return ['CEO', 'Director', 'Music Director', 'Administrator'].includes(member.role);
+          const mgmtKeywords = ['ceo', 'director', 'administrator', 'management', 'coordinator'];
+          return mgmtKeywords.some(kw => role.includes(kw));
         }
-        return member.role.includes(activeFilter);
+        return role.includes(activeFilter.toLowerCase());
       })
-      .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
+      .sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999));
   }, [members, activeFilter]);
 
   // Top subset for carousel
