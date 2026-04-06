@@ -32,28 +32,28 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 md:py-32 bg-gradient-dark overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-24 bg-gradient-dark overflow-hidden">
       <SubtleNotes />
       <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
             Get in <span className="text-gold-400">Touch</span>
           </h2>
           <motion.div
-            className="section-divider mt-8"
+            className="section-divider mt-6"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.5, ease: 'circOut' }}
           />
-          <p className="font-body text-white/50 mt-10 max-w-xl mx-auto uppercase tracking-[0.3em] text-sm">
+          <p className="font-body text-white/50 mt-8 max-w-xl mx-auto uppercase tracking-[0.3em] text-sm">
             Reach out for bookings, inquiries, or more information
           </p>
         </motion.div>
@@ -64,7 +64,7 @@ export default function Contact() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
           >
             <motion.h3 variants={itemVariants} className="font-display text-3xl text-white font-light mb-12">
               Contact Information
@@ -138,7 +138,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.8 }}
             className="space-y-10"
           >

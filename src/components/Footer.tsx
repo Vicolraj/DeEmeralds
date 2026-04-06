@@ -96,7 +96,8 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="font-body text-white/20 text-xs uppercase tracking-[0.2em]">
-            &copy; {new Date().getFullYear()} De Emeralds. All Rights Reserved.
+            &copy; {new Date().getFullYear()} De Emeralds. All Rights Reserved. |{' '}
+            {/* <a href="/admin/login" className="hover:text-gold-500/60 transition-colors">Admin</a> */}
           </p>
           <p className="font-body text-white/20 text-xs uppercase tracking-[0.2em]">
             Built with luxury by{' '}
