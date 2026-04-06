@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { db } from '../db';
-import { admins } from '../db/schema';
+import { db } from '../db/index.js';
+import { admins } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
-import { authenticateToken } from '../middleware/auth';
+import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_change_me';

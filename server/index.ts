@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth';
-import memberRoutes from './routes/members';
-import videoRoutes from './routes/videos';
-import rehearsalRoutes from './routes/rehearsals';
-import statsRoutes from './routes/stats';
-import socialRoutes from './routes/socials';
-import { db } from './db';
+import authRoutes from './routes/auth.js';
+import memberRoutes from './routes/members.js';
+import videoRoutes from './routes/videos.js';
+import rehearsalRoutes from './routes/rehearsals.js';
+import statsRoutes from './routes/stats.js';
+import socialRoutes from './routes/socials.js';
+import { db } from './db/index.js';
 import { sql } from 'drizzle-orm';
 
 dotenv.config();
