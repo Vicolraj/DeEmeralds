@@ -60,7 +60,8 @@ export default function MembersTab() {
     // Optimistic UI update
     updatedMembers[index] = neighbor;
     updatedMembers[newIndex] = current;
-    setMembers(updatedMembers);
+    // CRITICAL: Sort by displayOrder to ensure UI reflects database state
+    setMembers([...updatedMembers].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0)));
 
     try {
       // Persist both changes
@@ -153,7 +154,8 @@ export default function MembersTab() {
       role: role === 'Other' ? (customRole.trim() || 'Other') : role,
       photoUrl: photoUrl || null,
       photoPublicId: photoPublicId || null,
-      displayOrder: editingMember ? editingMember.displayOrder : members.length,
+      // Assign next displayOrder for new members
+      displayOrder: editingMember ? editingMember.displayOrder : Math.max(0, ...members.map(m => m.displayOrder || 0)) + 1,
     };
 
     try {
