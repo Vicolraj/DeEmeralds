@@ -18,7 +18,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: false, margin: '-50px' }}
       transition={{ delay: index * 0.06, duration: 0.6, ease: 'easeOut' }}
       whileHover={{ y: -10 }}
       className="relative overflow-hidden rounded-lg group cursor-pointer"
@@ -40,8 +40,8 @@ export default function MemberCard({ member, index }: MemberCardProps) {
         </div>
       )}
 
-      {/* Gradient overlay — always at bottom, never on face */}
-      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+      {/* Gradient overlay — darker at bottom for contrast */}
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
       {/* Gold border on hover */}
       <div className="absolute inset-0 border-2 border-gold-500/0 group-hover:border-gold-500/70 transition-all duration-500 rounded-lg" />
@@ -49,12 +49,12 @@ export default function MemberCard({ member, index }: MemberCardProps) {
       {/* Glow effect on hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[inset_0_-80px_60px_-40px_rgba(201,168,76,0.15)]" />
 
-      {/* Name & role — anchored to bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-400">
-        <p className="font-display text-white text-lg font-semibold leading-tight drop-shadow-lg">
+      {/* Name & role — anchored to bottom with extra contrast */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 pb-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-400">
+        <p className="font-display text-white text-lg font-bold leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
           {fullName}
         </p>
-        <p className="font-body text-gold-400 text-xs uppercase tracking-[0.2em] mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+        <p className="font-body text-gold-400 text-xs uppercase tracking-[0.2em] mt-1.5 font-medium opacity-90 group-hover:opacity-100 transition-opacity duration-300">
           {member.role}
         </p>
       </div>
