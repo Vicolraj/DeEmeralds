@@ -131,12 +131,10 @@ body {
 
 /* ── Divider Animation ── */
 .section-divider {
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.5), transparent);
-  margin-top: 0;
-  margin-bottom: 0;
-  width: 100%;
-  transform-origin: center;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);
+  margin: 0 auto;
 }
 
 /* ── Sparkle Animation ── */
@@ -173,13 +171,6 @@ body {
   animation: shimmer 3s linear infinite;
 }
 
-/* Section divider */
-.section-divider {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-gold-500), transparent);
-  margin: 0 auto;
-}
 
 /* ============================================= */
 /* 📱 Selection Styling                          */
