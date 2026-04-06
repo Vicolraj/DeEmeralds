@@ -18,6 +18,7 @@ export default function MembersTab() {
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
   const [role, setRole] = useState<VoiceRole>(VOICE_ROLES[0] as VoiceRole);
+  const [customRole, setCustomRole] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
   const [photoPublicId, setPhotoPublicId] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -43,6 +44,7 @@ export default function MembersTab() {
     setMiddleName('');
     setLastName('');
     setRole(VOICE_ROLES[0] as VoiceRole);
+    setCustomRole('');
     setPhotoUrl('');
     setPhotoPublicId('');
     setEditingMember(null);
@@ -59,7 +61,17 @@ export default function MembersTab() {
     setFirstName(member.firstName);
     setMiddleName(member.middleName || '');
     setLastName(member.lastName);
-    setRole(member.role as VoiceRole);
+    
+    // If role is not in VOICE_ROLES list, treat it as custom "Other"
+    const knownRoles = VOICE_ROLES as readonly string[];
+    if (knownRoles.includes(member.role)) {
+      setRole(member.role as VoiceRole);
+      setCustomRole('');
+    } else {
+      setRole('Other' as VoiceRole);
+      setCustomRole(member.role);
+    }
+
     setPhotoUrl(member.photoUrl || '');
     setPhotoPublicId(member.photoPublicId || '');
     setIsModalOpen(true);
@@ -87,8 +99,9 @@ export default function MembersTab() {
       const result = await uploadToCloudinary(compressedFile, (p) => setUploadPercent(p));
       setPhotoUrl(result.url);
       setPhotoPublicId(result.publicId);
-    } catch (err) {
-      alert('Photo optimization or upload failed.');
+    } catch (err: any) {
+      const msg = err?.message || 'Photo upload failed.';
+      alert(msg);
     } finally {
       setUploading(false);
     }
@@ -100,7 +113,7 @@ export default function MembersTab() {
       firstName,
       middleName: middleName || null,
       lastName,
-      role,
+      role: role === 'Other' ? (customRole.trim() || 'Other') : role,
       photoUrl: photoUrl || null,
       photoPublicId: photoPublicId || null,
       displayOrder: editingMember ? editingMember.displayOrder : members.length,
@@ -260,6 +273,17 @@ export default function MembersTab() {
                         <option key={r} value={r}>{r}</option>
                       ))}
                     </select>
+                    {/* Custom role input — only visible when 'Other' is selected */}
+                    {role === 'Other' && (
+                        <input
+                            type="text"
+                            className="w-full mt-3 bg-white/5 border border-gold-500/30 p-3 text-white placeholder-white/30 focus:border-gold-500/50 outline-none transition-colors rounded-sm"
+                            placeholder="Type custom role (e.g. Percussionist)"
+                            value={customRole}
+                            onChange={(e) => setCustomRole(e.target.value)}
+                            autoFocus
+                        />
+                    )}
                   </div>
 
                   <div>

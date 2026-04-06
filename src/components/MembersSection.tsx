@@ -7,7 +7,7 @@ export default function MembersSection() {
   const { members, loading, error } = useMembers();
 
   return (
-    <section id="members" className="relative py-32 md:py-48 bg-gradient-dark overflow-hidden">
+    <section id="members" className="relative py-20 md:py-32 bg-emerald-950 overflow-hidden">
       <SubtleNotes />
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-emerald-700/5 rounded-full blur-3xl pointer-events-none" />
@@ -18,7 +18,7 @@ export default function MembersSection() {
           className="text-center mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">

@@ -34,7 +34,7 @@ export default function Hero() {
         size: Math.random() * 20 + 20, // 20–40px
         speedX: (Math.random() - 0.5) * 0.4,
         speedY: (Math.random() - 0.5) * 0.4,
-        opacity: Math.random() * 0.2 + 0.1, // Max 0.3 — very subtle as requested
+        opacity: Math.random() * 0.2 + 0.05, // 0.05–0.25 — subtle
         pulse: Math.random() * Math.PI * 2,
         char: chars[Math.floor(Math.random() * chars.length)],
       });
@@ -49,7 +49,7 @@ export default function Hero() {
         p.x += p.speedX;
         p.y += p.speedY;
         p.pulse += 0.015;
-        const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+        const currentOpacity = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
 
         if (p.x < -20) p.x = canvas.width + 20;
         if (p.x > canvas.width + 20) p.x = -20;

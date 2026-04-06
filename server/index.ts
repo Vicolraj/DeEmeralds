@@ -7,6 +7,7 @@ import videoRoutes from './routes/videos.js';
 import rehearsalRoutes from './routes/rehearsals.js';
 import statsRoutes from './routes/stats.js';
 import socialRoutes from './routes/socials.js';
+import memberAuthRoutes from './routes/memberAuth.js';
 import { db } from './db/index.js';
 import { sql } from 'drizzle-orm';
 

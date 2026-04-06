@@ -54,7 +54,7 @@ export const NAV_LINKS = [
   { title: 'About', href: '#about' },
   { title: 'Members', href: '#members' },
   { title: 'Divisions', href: '#divisions' },
-  { title: 'Gallery', href: '#gallery' },
+  // { title: 'Gallery', href: '#gallery' },
   { title: 'Videos', href: '#videos' },
   { title: 'Contact', href: '#contact' },
 ] as const;

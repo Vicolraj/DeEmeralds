@@ -15,7 +15,7 @@ const DIVISION_ICONS: Record<string, React.ReactElement> = {
 
 export default function Divisions() {
   return (
-    <section id="divisions" className="relative py-32 md:py-48 bg-gradient-section overflow-hidden">
+    <section id="divisions" className="relative py-20 md:py-32 bg-gradient-section overflow-hidden">
       <SubtleNotes />
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -29,7 +29,7 @@ export default function Divisions() {
           className="text-center mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
@@ -39,7 +39,7 @@ export default function Divisions() {
             className="section-divider mt-8"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.5, ease: 'circOut' }}
           />
           <p className="font-body text-white/50 mt-10 max-w-xl mx-auto text-lg tracking-wide">
@@ -55,7 +55,7 @@ export default function Divisions() {
               className="glass rounded-xl p-10 md:p-14 group hover:border-gold-500/30 transition-all duration-500 relative overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ delay: index * 0.12, duration: 0.7, ease: 'easeOut' }}
               whileHover={{ y: -6 }}
             >

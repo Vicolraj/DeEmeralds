@@ -17,7 +17,9 @@ export async function uploadToCloudinary(
   const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
   if (!cloudName || !uploadPreset) {
-    throw new Error('Cloudinary configuration missing. Check VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET.');
+    throw new Error(
+      'Cloudinary is not configured. Make sure VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET are set in your Vercel environment variables and you have redeployed.'
+    );
   }
 
   const formData = new FormData();

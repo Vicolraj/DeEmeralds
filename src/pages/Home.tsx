@@ -13,35 +13,27 @@ import Sparkles from '../components/Sparkles';
 import { motion } from 'framer-motion';
 
 export default function Home() {
-  const Divider = () => (
-    <div className="max-w-7xl mx-auto px-10">
-        <motion.div 
-            className="section-divider"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1.5, ease: "circOut" }}
-        />
-    </div>
-  );
-
   return (
-    <div className="bg-emerald-950 min-h-screen text-white">
-      <Preloader />
+    <div className="min-h-screen bg-emerald-950 overflow-x-hidden">
       <Sparkles />
       <CustomCursor />
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
+
+        <div className="section-divider" />
         <About />
-        <Divider />
-        <MembersSection />
-        <Divider />
+
+        <div className="section-divider" />
         <Divisions />
-        <Divider />
-        {/* <Gallery /> */}
+
+        <div className="section-divider" />
+        <MembersSection />
+
+        <div className="section-divider" />
         <Videos />
-        <Divider />
+
+        <div className="section-divider" />
         <Contact />
       </main>
       <Footer />

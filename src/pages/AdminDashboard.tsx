@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import MembersTab from './admin/MembersTab.tsx';
 import VideosTab from './admin/VideosTab.tsx';
 import RehearsalsTab from './admin/RehearsalsTab.tsx';
+import MemberAccountsTab from './admin/MemberAccountsTab.tsx';
 import AdminsTab from './admin/AdminsTab.tsx';
 import SettingsTab from './admin/SettingsTab.tsx';
 import logo from '../assets/img/logo_nobg.webp';
 
-type Tab = 'members' | 'videos' | 'rehearsals' | 'admins' | 'settings';
+type Tab = 'members' | 'videos' | 'rehearsals' | 'accounts' | 'admins' | 'settings';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<Tab>('members');
@@ -92,6 +93,7 @@ export default function AdminDashboard() {
               {activeTab === 'members' && <MembersTab />}
               {activeTab === 'videos' && <VideosTab />}
               {activeTab === 'rehearsals' && <RehearsalsTab />}
+              {activeTab === 'accounts' && <MemberAccountsTab />}
               {activeTab === 'admins' && <AdminsTab />}
               {activeTab === 'settings' && <SettingsTab />}
             </motion.div>
@@ -102,7 +104,7 @@ export default function AdminDashboard() {
       {/* Footer */}
       <footer className="py-6 border-t border-white/5 text-center">
             <p className="font-body text-white/20 text-xs uppercase tracking-widest italic">
-                Portal securely managed by De Emeralds Tech.
+                Portal securely managed by Vicolraj.
             </p>
       </footer>
     </div>

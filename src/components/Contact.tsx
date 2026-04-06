@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-32 md:py-48 bg-gradient-dark overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-dark overflow-hidden">
       <SubtleNotes />
       <div className="relative z-10 max-w-7xl mx-auto px-10">
         {/* Section Header */}
@@ -40,7 +40,7 @@ export default function Contact() {
           className="text-center mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
@@ -50,7 +50,7 @@ export default function Contact() {
             className="section-divider mt-8"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.5, ease: 'circOut' }}
           />
           <p className="font-body text-white/50 mt-10 max-w-xl mx-auto uppercase tracking-[0.3em] text-sm">
@@ -64,7 +64,7 @@ export default function Contact() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.15 }}
           >
             <motion.h3 variants={itemVariants} className="font-display text-3xl text-white font-light mb-12">
               Contact Information
@@ -138,12 +138,15 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.8 }}
             className="space-y-10"
           >
             {/* Map */}
-            <div className="rounded-xl overflow-hidden shadow-2xl glass p-2">
+            <div 
+              className="rounded-xl overflow-hidden shadow-2xl glass p-2"
+              data-lenis-prevent
+            >
               <iframe
                 src={GOOGLE_MAP_EMBED_URL}
                 className="w-full h-[300px] rounded-lg"

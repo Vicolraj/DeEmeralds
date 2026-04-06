@@ -6,7 +6,7 @@ export default function Videos() {
   const { videos, loading, error } = useVideos();
 
   return (
-    <section id="videos" className="relative py-32 md:py-48 bg-emerald-950 overflow-hidden">
+    <section id="videos" className="relative py-20 md:py-32 bg-emerald-950 overflow-hidden">
       <SubtleNotes />
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-3xl pointer-events-none" />
@@ -17,7 +17,7 @@ export default function Videos() {
           className="text-center mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="font-display text-4xl md:text-7xl text-white font-light mb-6">
@@ -27,7 +27,7 @@ export default function Videos() {
             className="section-divider mt-8"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: false }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.5, ease: 'circOut' }}
           />
           <p className="font-body text-white/50 mt-10 max-w-xl mx-auto uppercase tracking-[0.3em] text-sm">
@@ -58,10 +58,13 @@ export default function Videos() {
                 className="group relative"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
-                <div className="relative aspect-video overflow-hidden rounded-xl shadow-2xl glass transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-gold-500/10">
+                <div 
+                  className="relative aspect-video overflow-hidden rounded-xl shadow-2xl glass transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-gold-500/10"
+                  data-lenis-prevent
+                >
                   <iframe
                     src={`https://www.youtube.com/embed/${video.videoId}`}
                     title={video.title || 'De Emeralds Performance'}
