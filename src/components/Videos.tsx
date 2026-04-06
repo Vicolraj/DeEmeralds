@@ -63,7 +63,6 @@ export default function Videos() {
               >
                 <div 
                   className="relative aspect-video overflow-hidden rounded-xl shadow-2xl glass transition-transform duration-500 group-hover:-translate-y-2 group-hover:shadow-gold-500/10"
-                  data-lenis-prevent
                 >
                   <iframe
                     src={`https://www.youtube.com/embed/${video.videoId}`}

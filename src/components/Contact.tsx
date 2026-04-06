@@ -145,7 +145,6 @@ export default function Contact() {
             {/* Map */}
             <div 
               className="rounded-xl overflow-hidden shadow-2xl glass p-2"
-              data-lenis-prevent
             >
               <iframe
                 src={GOOGLE_MAP_EMBED_URL}

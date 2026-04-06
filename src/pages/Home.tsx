@@ -9,10 +9,12 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import CustomCursor from '../components/CustomCursor';
 import Sparkles from '../components/Sparkles';
+import Preloader from '../components/Preloader';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-emerald-950 overflow-x-hidden">
+      <Preloader />
       <Sparkles />
       <CustomCursor />
       <Navbar />
