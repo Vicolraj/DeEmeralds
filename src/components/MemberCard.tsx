@@ -19,7 +19,7 @@ export default function MemberCard({ member, index }: MemberCardProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: '-20px' }}
-      transition={{ delay: index * 0.03, duration: 0.4, ease: 'easeOut' }}
+      transition={{ delay: Math.min(index * 0.01, 0.1), duration: 0.3, ease: 'easeOut' }}
       whileHover={{ y: -10 }}
       className="relative overflow-hidden rounded-lg group cursor-pointer"
       style={{ aspectRatio: '3 / 4' }}

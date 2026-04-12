@@ -81,8 +81,8 @@ export default function MembersSection() {
   };
 
   const FilterBar = ({ className = "" }: { className?: string }) => (
-    <div className={`flex justify-center mb-8 overflow-x-auto pb-4 hide-scrollbar ${className}`}>
-      <div className="flex gap-3 px-4 bg-white/5 p-2 rounded-full border border-white/5 backdrop-blur-sm">
+    <div className={`flex justify-start md:justify-center mb-8 overflow-x-auto pb-4 hide-scrollbar ${className}`}>
+      <div className="flex gap-3 px-6 bg-white/5 p-2 rounded-full border border-white/5 backdrop-blur-sm mx-auto md:mx-0 min-w-max">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -166,7 +166,7 @@ export default function MembersSection() {
                       type: 'spring', 
                       stiffness: 260, 
                       damping: 20,
-                      delay: index * 0.03 
+                      delay: Math.min(index * 0.01, 0.1) 
                     }}
                     className="flex-shrink-0 w-[280px] md:w-[320px] snap-start"
                   >
@@ -242,7 +242,7 @@ export default function MembersSection() {
                 </div>
                 
                 {/* Embedded Filter in Modal */}
-                <FilterBar className="!mb-0 scale-90 origin-left md:origin-right" />
+                <FilterBar className="!mb-0 md:scale-90 md:origin-right" />
 
                 <button 
                   onClick={() => setIsModalOpen(false)}
