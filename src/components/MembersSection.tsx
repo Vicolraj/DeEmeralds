@@ -159,9 +159,9 @@ export default function MembersSection() {
                   <motion.div
                     key={member.id}
                     layout
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 0 }}
                     transition={{ 
                       type: 'spring', 
                       stiffness: 260, 
@@ -228,9 +228,9 @@ export default function MembersSection() {
             />
             
             <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              initial={{ opacity: 0, y: 40, scale: 0 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 40, scale: 0.98 }}
+              exit={{ opacity: 0, y: 40, scale: 0 }}
               className="relative w-full max-w-7xl h-full bg-emerald-900/10 border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
